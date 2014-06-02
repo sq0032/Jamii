@@ -1,0 +1,24 @@
+<html>
+<head>
+
+</head>
+<body>
+<div style="height:100px"></div>
+<div style="width:100%; text-align:center">
+
+	<form action="" method="post">
+		{% csrf_token %}
+		{{loginform.as_p}}
+		<input type="submit" value="submit">
+		{% if is_invalid %}
+			<p style="color:red">Your accounts seems to be invalid</p>
+		{% endif %}
+	</form>
+	<p style="margin-top:50px">{{introduction}}</p>
+</div>
+
+
+
+<script>
+</body>
+</html>
