@@ -1,0 +1,30 @@
+[
+{
+    "pk": 1, 
+    "model": "account.role", 
+    "fields": {
+        "role": "admin"
+    }
+},
+{
+    "pk": 2, 
+    "model": "account.role", 
+    "fields": {
+        "role": "alumnus"
+    }
+},
+{
+    "pk": 3, 
+    "model": "account.role", 
+    "fields": {
+        "role": "entrepreneur"
+    }
+},
+{
+    "pk": 4, 
+    "model": "account.role", 
+    "fields": {
+        "role": "mentor"
+    }
+}
+]
