@@ -12,7 +12,7 @@ class LoginForm(forms.Form):
 
 def main(request):
     if request.user.is_authenticated():
-        return render(request, 'jamii.html', locals())
+        return render(request, 'jamii.html')
     else:
         login = True
         loginform = LoginForm()
@@ -25,6 +25,7 @@ def main(request):
             user = auth.authenticate(username=username, password=password)
             if user is not None and user.is_active:
                 auth.login(request, user)
+                return render(request, 'jamii.html')
             else:
                 is_invalid = True
         return render(request, 'login.html', locals())

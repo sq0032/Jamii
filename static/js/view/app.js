@@ -8,7 +8,7 @@ app.appView = Backbone.View.extend({
 		this.render();
 	},
 	render:function(){
-		this.$el.html(app.user.get('name'));
+
 	},
 
 });
