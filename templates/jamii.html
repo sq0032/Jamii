@@ -1,0 +1,70 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+
+
+<div id="app">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+	<div style="height:100px"></div>
+	<div style="width:100%; text-align:center">
+
+
+		<p> you are logged in. </p>
+
+	</div>
+
+</div>
+<!-- Load Libaries -->
+<script src="{% static 'js/lib/jquery-1.11.1.js' %}"></script>
+<script src="{% static 'js/lib/jquery-ui-1.10.4.custom.min.js' %}"></script>
+<script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/lib/underscore-min.js' %}"></script>
+<script src="{% static 'js/lib/backbone-min.js' %}"></script>
+<script src="{% static 'js/jamii.js' %}"></script>
+
+<!-- Load Backbone Models-->
+<script src="{% static 'js/model/UserModel.js' %}"></script>
+
+<!-- Load Backbone Views-->
+<script src="{% static 'js/view/app.js' %}"></script>
+
+
+
+</body>
+</html>

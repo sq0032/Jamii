@@ -49,6 +49,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR,  'templates'),
+)
+
 ROOT_URLCONF = 'Jamii.urls'
 
 WSGI_APPLICATION = 'Jamii.wsgi.application'
@@ -82,3 +86,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
