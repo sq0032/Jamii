@@ -18,7 +18,8 @@ def main(request):
         loginform = LoginForm()
         intro = JamiiIntroduction.objects.filter(id=1)
         if intro.count() > 0:
-            introduction = intro[0].intro   
+            introduction        = intro[0].intro
+            introduction_video  = intro[0].video
         if request.method=="POST":
             username = request.POST.get('username','')
             password = request.POST.get('password','')
