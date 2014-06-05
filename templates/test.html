@@ -1,0 +1,57 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<div style="height:100px"></div>
+<div style="width:100%">
+	<ul class="media-list">
+	  <li class="media">
+		<a class="pull-left" href="#">
+		  <img class="media-object" src="{{MEDIA_URL}}{{user.thumbnail}}" alt="..." style="height:64px;weight:64px">
+		</a>
+		<div class="media-body">
+		  <h4 class="media-heading">{{user.user.username}}</h4>
+		  ...
+		</div>
+	  </li>
+	</ul>
+	
+	<div id="test">
+		<form enctype="multipart/form-data" action="/account/test" method="post">
+			{% csrf_token %}
+			<div style="border:orange 1px solid; width:300px; margin:auto; padding:10px">
+			{{jamiiuserform.as_p}}
+			{{jamiiuserform.errors}}
+			<input type="submit" value="submit">
+			{% if is_invalid %}
+				<p style="color:red">Your accounts seems to be invalid</p>
+			{% endif %}
+			</div>
+		</form>
+	</div>
+	
+	<div id="app">
+	
+	</div>
+</div>
+
+
+
+<!-- Load Libaries -->
+<script src="{% static 'js/lib/jquery-1.11.1.js' %}"></script>
+<script src="{% static 'js/lib/jquery-ui-1.10.4.custom.min.js' %}"></script>
+<script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/lib/underscore-min.js' %}"></script>
+<script src="{% static 'js/lib/backbone-min.js' %}"></script>
+<script src="{% static 'js/jamii.js' %}"></script>
+
+<!-- Load Backbone Models-->
+<script src="{% static 'js/model/UserModel.js' %}"></script>
+
+<!-- Load Backbone Views-->
+<script src="{% static 'js/view/app.js' %}"></script>
+
+</body>
+</html>
