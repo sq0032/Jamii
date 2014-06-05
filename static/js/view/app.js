@@ -12,4 +12,3 @@ app.appView = Backbone.View.extend({
 	},
 
 });
-

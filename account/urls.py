@@ -5,5 +5,6 @@ from account.views import *
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^(\d+)/$', user),
     url(r'^$', user),
 )

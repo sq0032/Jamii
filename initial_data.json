@@ -26,5 +26,13 @@
     "fields": {
         "role": "mentor"
     }
+},
+{
+    "pk": 1, 
+    "model": "Jamii.jamiiintroduction", 
+    "fields": {
+        "intro": "This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction ", 
+        "video": "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/40nFOYGVJtY\" frameborder=\"0\" allowfullscreen></iframe>"
+    }
 }
 ]
