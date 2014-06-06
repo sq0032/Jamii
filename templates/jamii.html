@@ -5,41 +5,55 @@
 </head>
 <body>
 
-
 <div id="app">
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Jamii</a>
-    </div>
+	<nav id="nav-view" class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="#">Jamii</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul id="user-navview" class="nav navbar-nav navbar-right">
+			<li><a id="user-navview-thumbnail" href="#" style="padding:5px"><img src="{{MEDIA_URL}}{{user.jamiiuser.thumbnail}}" alt="..." class="img-circle" height="40px"></a></li>
+			<li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{user.first_name}} {{user.last_name}} <b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+				<li><a id="user-navview-notification"href="#"><span class="badge pull-right">42</span>Notifications</a></li>
+				<li><a id="user-navview-inbox"href="#"><span class="badge pull-right">4</span>Inbox</a></li>
+				<li><a id="user-navview-setting" href="#">Settings</a></li>
+				<li class="divider"></li>
+				<li><a id="user-navview-signout" href="#">sign out</a></li>
+			  </ul>
+			</li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+	<div id="menu" style="position:fixed; top:50px; bottom:0px; width:230px; max-height:100%; height:auto; border:#e8e8e8 1px solid;">
+		<!--
+		<button type="button" class="btn btn-default btn-md" style="position:absolute;left:210px; top:50%; z-index:10000">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</button>
+		-->
+		<div class="list-group">
+		  <a href="#" class="list-group-item active">
+			Cras justo odio
+		  </a>
+		  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>	
+		  <a href="#" class="list-group-item">Morbi leo risus</a>
+		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		</div>
 
-
+	</div>
 
 	<div style="height:100px"></div>
 	<div style="width:100%; text-align:center">
@@ -48,7 +62,6 @@
 		<p> you are logged in. </p>
 
 	</div>
-
 </div>
 <!-- Load Libaries -->
 <script src="{% static 'js/lib/jquery-1.11.1.js' %}"></script>
@@ -62,6 +75,8 @@
 <script src="{% static 'js/model/UserModel.js' %}"></script>
 
 <!-- Load Backbone Views-->
+<script src="{% static 'js/view/NavView.js' %}"></script>
+<script src="{% static 'js/view/MenuView.js' %}"></script>
 <script src="{% static 'js/view/app.js' %}"></script>
 
 

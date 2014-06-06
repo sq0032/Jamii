@@ -7,6 +7,7 @@ app.UserModel = Backbone.Model.extend({
 		firs_name	: 'first_name',
 		last_name	: 'last_name',
 		email		: 'example@gmail.com',
+		thumbnail	: 'unknown path',
 	},
 	urlRoot:'/account/',
 });

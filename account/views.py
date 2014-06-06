@@ -32,9 +32,10 @@ def user(request):
         data['last_name']   = request.user.last_name
         data['email']       = request.user.email
         data['phone']       = request.user.jamiiuser.phone
+        data['thumbnail']   = request.user.jamiiuser.thumbnail.url
         return HttpResponse(json.dumps(data), content_type="application/json")
     else:
-        return HttpResponse('No')
+        return HttpResponse('This user is not existed')
     return HttpResponse(json.dumps(data), content_type="application/json")
 
 def users(request):
