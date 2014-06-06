@@ -4,5 +4,4 @@ $(".tasklist").sortable({
 
 $(function(){
 	app.appview = new app.appView();
-
 });

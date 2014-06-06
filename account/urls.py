@@ -6,4 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', user),
+    url(r'^test$', test),
+    url(r'^edit$', editProfile),
+    #url(r'^test$', user),
 )
