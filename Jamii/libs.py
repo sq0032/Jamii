@@ -1,3 +1,11 @@
+def thumbnail_path(instance, filename):
+    try:
+        extName = filename.rsplit('.',1)[1]
+    except:
+        extName = ""
+    name = instance.id
+    return 'thumbnail/%s-s.%s'%(name,extName)
+
 def isLandscape(width, height):
     """
     Takes the image width and height and returns if the image is in landscape
@@ -37,11 +45,3 @@ def cropit(img):
     box = (upper_x, upper_y, lower_x, lower_y)
     region = img.crop(box)
     return region
-
-def thumbnail_path(instance, filename):
-    try:
-        extName = filename.rsplit('.',1)[1]
-    except:
-        extName = ""
-    name = instance.id
-    return 'thumbnail/%s-s.%s'%(name,extName)

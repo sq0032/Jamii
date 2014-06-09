@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django import template
 from account.models import JamiiUser
@@ -33,6 +33,8 @@ def user(request):
         data['email']       = request.user.email
         data['phone']       = request.user.jamiiuser.phone
         data['thumbnail']   = request.user.jamiiuser.thumbnail.url
+        
+        data['teams']       = [1,2,3,4,5]
         return HttpResponse(json.dumps(data), content_type="application/json")
     else:
         return HttpResponse('This user is not existed')
@@ -51,3 +53,13 @@ def editProfile(request):
     else:
         jamiiuserform = JamiiUserModelForm()
     return render(request, 'test.html', locals())
+
+def teams(request, user_id):
+    #if int(request.user.id) != int(user_id):
+    #    return redirect('/')
+    if request.method == 'GET':
+        data = {}
+        data = [{'id':'1', 'name':'team1','href':'team/1/'},
+                {'id':'2', 'name':'team2','href':'team/2/'},
+                {'id':'3', 'name':'team3','href':'team/3/'}]
+        return HttpResponse(json.dumps(data), content_type="application/json")

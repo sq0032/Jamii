@@ -3,21 +3,30 @@ var app = app || {};
 app.MenuView = Backbone.View.extend({
 	el: '#menu',
 	events: {
-		"click button"				: "toggleMenu",
-		"click #user-navview-thumbnail"		: "openPersonalPage",
-		"click #user-navview-notification"	: "openNotification",
+		//"click button"	: "toggleMenu",
+
 	},
 	initialize: function() {
-		//this.$userNav = this.$("#userNav");
-		//this.$guestNav = this.$("#guestNav");
-		//this.guestMode();
-		//this.listenTo(app.loginUser, 'getNav', this.loginMode);
+		
+		this.listenTo(app.teamlist, "reset", this.renderTeamList);
+		
 		this.render();
 	},
 	render: function(){
-		//this
+		
 	},
-	toggleMenu: function(){
-		this.$el.css('left','-230');
+	test: function(){
+		app.teamlist.each(function(team){
+			alert(team.get('name'));
+		});
+	},
+	renderTeamList: function(){
+		this.$("#team-menu").html('');
+		
+		var that = this;
+		app.teamlist.each(function(team){
+			var html = '<a href="#'+team.get('href')+'" class="list-group-item">'+team.get('name')+'</a>';
+			that.$("#team-menu").append(html);
+		});
 	},
 });

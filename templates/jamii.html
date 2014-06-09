@@ -43,15 +43,17 @@
 			<span class="glyphicon glyphicon-chevron-left"></span>
 		</button>
 		-->
-		<div class="list-group">
-		  <a href="#" class="list-group-item active">
-			Cras justo odio
-		  </a>
-		  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>	
-		  <a href="#" class="list-group-item">Morbi leo risus</a>
-		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		<div id="user-menu">
+		  <a href="#" class="list-group-item active">News Feed</a>
 		</div>
+		Group
+		<div id="team-menu">
+		</div>
+		<div id="network-menu">
+		  Network
+			<a href="#" class="list-group-item">Network</a>
+		</div>
+			
 
 	</div>
 
@@ -72,9 +74,12 @@
 <script src="{% static 'js/jamii.js' %}"></script>
 
 <!-- Load Backbone Models-->
-<script src="{% static 'js/model/UserModel.js' %}"></script>
+<script src="{% static 'js/model/Team.js' %}"></script>
+<script src="{% static 'js/model/User.js' %}"></script>
+<script src="{% static 'js/model/MenuItem.js' %}"></script>
 
 <!-- Load Backbone Views-->
+<script src="{% static 'js/view/MenuItemView.js' %}"></script>
 <script src="{% static 'js/view/NavView.js' %}"></script>
 <script src="{% static 'js/view/MenuView.js' %}"></script>
 <script src="{% static 'js/view/app.js' %}"></script>
