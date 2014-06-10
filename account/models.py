@@ -21,7 +21,7 @@ class JamiiUser(models.Model):
 
     def __unicode__(self):
         return "%s - %s" % (self.user.username, self.role)
-    
+
     def create_thumbnail(self):
         # original code for this method came from
         # http://snipt.net/danfreak/generate-thumbnails-in-django-with-pil/

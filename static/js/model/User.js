@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.UserModel = Backbone.Model.extend({
+app.User = Backbone.Model.extend({
 	defaults:{
 		//id			: 'user_id',
 		name		: 'name',
@@ -8,6 +8,15 @@ app.UserModel = Backbone.Model.extend({
 		last_name	: 'last_name',
 		email		: 'example@gmail.com',
 		thumbnail	: 'unknown path',
+		teams		: '',
 	},
+	/*
+	initialize: function(){
+		var that = this;
+		this.teams = new app.Teams();
+		this.teams.url = function(){
+			return 'account/'+that.id+'/teams/';
+		}
+	},*/
 	urlRoot:'/account/',
 });

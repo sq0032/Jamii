@@ -7,7 +7,8 @@ from models import JamiiIntroduction
 
 #test function (you can delete it anytime)
 def test(request):
-    return render(request,'test.html',locals())
+    #return render(request,'test.html',locals())
+    return HttpResponse('test')
 
 class LoginForm(forms.Form):
     username = forms.CharField()

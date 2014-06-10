@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django import template
+from django.contrib.auth.decorators import login_required
 from account.models import JamiiUser
 from account.form import JamiiUserModelForm
 import json
@@ -32,7 +33,12 @@ def user(request):
         data['last_name']   = request.user.last_name
         data['email']       = request.user.email
         data['phone']       = request.user.jamiiuser.phone
-        data['thumbnail']   = request.user.jamiiuser.thumbnail.url
+        try:
+            data['thumbnail']   = request.user.jamiiuser.thumbnail.url
+        except:
+            data['thumbnail']   = '/temp/img.jpg'
+        
+        data['teams']       = [1,2,3,4,5]
         return HttpResponse(json.dumps(data), content_type="application/json")
     else:
         return HttpResponse('This user is not existed')
@@ -51,3 +57,15 @@ def editProfile(request):
     else:
         jamiiuserform = JamiiUserModelForm()
     return render(request, 'test.html', locals())
+
+@login_required#(login_url='/')
+def teams(request):
+    if request.method == 'GET':
+        teams = request.user.team_set.all()
+        data = []
+        
+        for team in teams:
+            team_dic = {'id'    : team.id, 
+                        'name'  : team.name}
+            data.append(team_dic)
+        return HttpResponse(json.dumps(data), content_type="application/json")
