@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^account/', include('account.urls')),
+    url(r'^team/', include('team.urls')),
     
     #test function
     url(r'^test/$', test),

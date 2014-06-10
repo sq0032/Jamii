@@ -7,8 +7,12 @@ app.appView = Backbone.View.extend({
 		app.user = new app.User();
 		app.teamlist = new app.TeamList();
 		//new global views
-		navView = new app.NavView();
-		menuView = new app.MenuView();
+		this.navView = new app.NavView();
+		this.navView.parentView = this;
+		this.menuView = new app.MenuView();
+		this.menuView.parentView = this;
+		this.pageView = new app.PageView();
+		this.pageView.parentView = this;
 		//this.listenTo(this.collection, "change", this.render);
 		
 		this.listenTo(app.user, "change", this.render)

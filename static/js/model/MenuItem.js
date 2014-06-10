@@ -12,5 +12,5 @@ app.MenuItem = Backbone.Model.extend({
 app.TeamList = Backbone.Collection.extend({
 	model	: app.MenuItem,
 	url		: function(){
-				return 'account/'+app.user.get('id')+'/teams/'},
+				return 'account/teams/'},
 });

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django import template
+from django.contrib.auth.decorators import login_required
 from account.models import JamiiUser
 from account.form import JamiiUserModelForm
 import json
@@ -32,7 +33,10 @@ def user(request):
         data['last_name']   = request.user.last_name
         data['email']       = request.user.email
         data['phone']       = request.user.jamiiuser.phone
-        data['thumbnail']   = request.user.jamiiuser.thumbnail.url
+        try:
+            data['thumbnail']   = request.user.jamiiuser.thumbnail.url
+        except:
+            data['thumbnail']   = '/temp/img.jpg'
         
         data['teams']       = [1,2,3,4,5]
         return HttpResponse(json.dumps(data), content_type="application/json")
@@ -54,12 +58,14 @@ def editProfile(request):
         jamiiuserform = JamiiUserModelForm()
     return render(request, 'test.html', locals())
 
-def teams(request, user_id):
-    #if int(request.user.id) != int(user_id):
-    #    return redirect('/')
+@login_required#(login_url='/')
+def teams(request):
     if request.method == 'GET':
-        data = {}
-        data = [{'id':'1', 'name':'team1','href':'team/1/'},
-                {'id':'2', 'name':'team2','href':'team/2/'},
-                {'id':'3', 'name':'team3','href':'team/3/'}]
+        teams = request.user.team_set.all()
+        data = []
+        
+        for team in teams:
+            team_dic = {'id'    : team.id, 
+                        'name'  : team.name}
+            data.append(team_dic)
         return HttpResponse(json.dumps(data), content_type="application/json")
