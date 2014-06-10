@@ -9,6 +9,12 @@ app.NavView = Backbone.View.extend({
 		"click #user-navview-inbox"			: "openInbox",
 		"click #user-navview-setting"		: "openSettingPage",
 		"click #user-navview-signout"		: "signout",
+		
+		//Team Menu	(might be changed later)
+		"click #team-menu-home"		: "openTeamHomePage",
+		"click #team-menu-workspace": "openTeamWorkspace",
+		"click #team-menu-inbox"	: "openTeamInbox",
+		"click #team-menu-learn"	: "openTeamLearn",
 	},
 	initialize: function() {
 		//this.$userNav = this.$("#userNav");
@@ -39,5 +45,31 @@ app.NavView = Backbone.View.extend({
 	},
 	signout:function(){
 		alert('user sign out');
+	},
+	
+	//Team Menu
+	openTeamHomePage:function(){
+		if(app.appview.pageView.contentView==null){
+			app.appview.pageView.renderTeamPage();
+		}
+		app.appview.pageView.contentView.renderHomePage();
+	},
+	openTeamWorkspace:function(){
+		if(app.appview.pageView.contentView==null){
+			app.appview.pageView.renderTeamPage();
+		}
+		app.appview.pageView.contentView.renderWorkspacePage();
+	},
+	openTeamInbox:function(){
+		if(app.appview.pageView.contentView==null){
+			app.appview.pageView.renderTeamPage();
+		}
+		app.appview.pageView.contentView.renderInboxPage();
+	},
+	openTeamLearn:function(){
+		if(app.appview.pageView.contentView==null){
+			app.appview.pageView.renderTeamPage();
+		}
+		app.appview.pageView.contentView.renderLearnPage();
 	},
 });

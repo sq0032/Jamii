@@ -6,7 +6,12 @@
 <body>
 
 <div id="app">
-	<nav id="nav-view" class="navbar navbar-default" role="navigation">
+<!--
+	<div id="team-menu" style="margin-left:230px">
+		<a type="button" style="width:40px">1</a>
+	</div>
+-->
+	<nav id="nav-view" class="navbar navbar-default navbar-fixed-top" role="navigation">
 	  <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -20,6 +25,12 @@
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div id="team-menu" style="position:fixed; left:230px">
+			  <a id="team-menu-home" type="button" href="#team" class="btn btn-default navbar-btn">Home</a>
+			  <a id="team-menu-learn" type="button" href="#team/learn" class="btn btn-default navbar-btn">Learn</a>
+			  <a id="team-menu-workspace" type="button" href="#team/workspace" class="btn btn-default navbar-btn">WorkSpace</a>
+			  <a id="team-menu-inbox" type="button" href="#team/inbox" class="btn btn-default navbar-btn">Inbox</a>
+			</div>
 		  <ul id="user-navview" class="nav navbar-nav navbar-right">
 			<li><a id="user-navview-thumbnail" href="#" style="padding:5px"><img src="{{MEDIA_URL}}{{user.jamiiuser.thumbnail}}" alt="..." class="img-circle" height="40px"></a></li>
 			<li class="dropdown">
@@ -46,7 +57,7 @@
 		<div id="user-menu">
 		  <a href="#" class="list-group-item active">News Feed</a>
 		</div>
-		Group
+		  Group
 		<div id="team-menu">
 		</div>
 		<div id="network-menu">
@@ -54,56 +65,8 @@
 			<a href="#" class="list-group-item">Network</a>
 		</div>
 	</div>
-
-
-	<div id="page-view" style="margin-left:230px; padding-left:20px">
-
-
-		<div id="team-page">
-<div class="jumbotron">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-8">
-			  <h1>TEAM LOGO</h1>
-			  <p>...</p>
-			  <p>...</p>
-			  <p>...</p>
-			</div class="col-sm-4">
-
-			</div>
-		</div>
-		<div>
-	</div>
-</div>
-
-<div class="jumbotron">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-8">
-			  <h1></h1>
-			  <p>...</p>
-			  <p>...</p>
-			  <p>...</p>
-			  <p>...</p>
-			</div class="col-xs-4">
-			</div>
-		</div>
-		<div>
-	</div>
-</div>
-	
-	
-<div id="footer" style="background-color:000000; color:FFFFFF; height:50px; width:100%">
-	<div class="row">
-		<div class="col-xs-2 col-xs-offset-2"><p>@2014 HR, Inc.</p></div> 
-		<div class="col-xs-2"><a href="#">policy</a></div>
-		<div class="col-xs-2"><a href="#">about us</a></div>
-		<div class="col-xs-2"><a href="#">contact us</a></div>
-	</div>
-</div>
+	<div id="page-view" style="margin-left:230px; padding-top:50px">
 		
-		</div>
-
 	</div>
 </div>
 <!-- Load Libaries -->
