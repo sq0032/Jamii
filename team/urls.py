@@ -7,5 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     #url(r'^$', user),
 #    url(r'^(\d+)/teams/$', teams),
+    url(r'^(\d+)/$', team),
     url(r'^test$', test),
 )

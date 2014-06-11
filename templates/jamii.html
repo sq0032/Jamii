@@ -82,10 +82,19 @@
 <script src="{% static 'js/model/User.js' %}"></script>
 <script src="{% static 'js/model/MenuItem.js' %}"></script>
 
-<!-- Load Backbone Views-->
+<!-- Load Backbone 1-level Views-->
+<script src="{% static 'js/view/PageView/Team/TeamHomePageView.js' %}"></script>
+<script src="{% static 'js/view/PageView/Team/TeamInboxPageView.js' %}"></script>
+<script src="{% static 'js/view/PageView/Team/TeamLearnPageView.js' %}"></script>
+<script src="{% static 'js/view/PageView/Team/TeamWorkspacePageView.js' %}"></script>
+
+<!-- Load Backbone 2-level Views-->
+<script src="{% static 'js/view/PageView/Team/TeamView.js' %}"></script>
+
+<!-- Load Backbone 3-level Views-->
 <script src="{% static 'js/view/NavView.js' %}"></script>
 <script src="{% static 'js/view/MenuView.js' %}"></script>
-<script src="{% static 'js/view/PageView.js' %}"></script>
+<script src="{% static 'js/view/PageView/PageView.js' %}"></script>
 <script src="{% static 'js/view/app.js' %}"></script>
 
 
