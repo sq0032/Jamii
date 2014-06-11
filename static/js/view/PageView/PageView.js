@@ -1,19 +1,5 @@
 var app = app || {};
 
-app.TeamView = Backbone.View.extend({
-	tagName: 'div',
-	events:{
-	
-	},
-	initialize:function(){
-		this.render();
-		alert(this.options.magic);
-	},
-	render: function(){
-		this.$el.html('hello testview');
-	},
-});
-
 app.PageView = Backbone.View.extend({
 	el: '#page-view',
 	events: {
@@ -34,9 +20,9 @@ app.PageView = Backbone.View.extend({
 	},
 	renderTeamPage: function(id, name){
 		this.cleanViews();
-		//var team = new app.Team()
-		//this.contentView = new app.testView({magic:true});
-		this.$el.html(id+name);
+		var team = new app.Team({id:id});
+		this.contentView = new app.TeamView({model:team});
+		this.$el.html(this.contentView.el);
 	},
 	renderNewsFeed: function(){
 		this.cleanViews();

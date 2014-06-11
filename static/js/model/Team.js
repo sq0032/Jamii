@@ -2,11 +2,13 @@ var app = app || {};
 
 app.Team = Backbone.Model.extend({
 	defaults:{
-		//id			: 'user_id',
+		id			: 'teamid',
 		name		: 'team\' name',
 		introduction: 'team\'s introduction',
-		//email		: 'example@gmail.com',
-		//thumbnail	: 'unknown path',
+		member		: [],
+		leader		: 'leaderid',
+		mentor		: [],
+		msg_box		: 'boxid',
 	},
 	urlRoot: '/team/',
 });
