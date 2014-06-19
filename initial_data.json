@@ -137,5 +137,122 @@
         "logo": "teamlogo/18df1f6.jpg", 
         "leader": 3
     }
+},
+{
+    "pk": 1, 
+    "model": "taskboard.taskboard", 
+    "fields": {
+        "name": "TaskBoard Team1", 
+        "team": 1
+    }
+},
+{
+    "pk": 2, 
+    "model": "taskboard.taskboard", 
+    "fields": {
+        "name": "TaskBoard Team2", 
+        "team": 2
+    }
+},
+{
+    "pk": 1, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 1, 
+        "name": "Idea", 
+        "board": 1
+    }
+},
+{
+    "pk": 2, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 2, 
+        "name": "Todo", 
+        "board": 1
+    }
+},
+{
+    "pk": 3, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 3, 
+        "name": "Doing", 
+        "board": 1
+    }
+},
+{
+    "pk": 4, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 4, 
+        "name": "Done", 
+        "board": 1
+    }
+},
+{
+    "pk": 1, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 1", 
+        "create_datetime": "2014-06-19T13:37:50.176Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 1, 
+        "description": ""
+    }
+},
+{
+    "pk": 2, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 2", 
+        "create_datetime": "2014-06-19T13:37:55.492Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 2, 
+        "description": ""
+    }
+},
+{
+    "pk": 3, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 3", 
+        "create_datetime": "2014-06-19T13:38:00.185Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 4, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 4", 
+        "create_datetime": "2014-06-19T13:38:07.108Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 4, 
+        "description": ""
+    }
+},
+{
+    "pk": 5, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 5", 
+        "create_datetime": "2014-06-19T13:38:11.796Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 5, 
+        "description": ""
+    }
 }
 ]

@@ -9,4 +9,8 @@ urlpatterns = patterns('',
 #    url(r'^(\d+)/teams/$', teams),
     #url(r'^(\d+)/$', team),
     url(r'^test$', test),
+    url(r'^card$', cards),
+    url(r'^card/(\d+)/$', card),
+    url(r'^list/(\d+)/$', list),
+    url(r'^(\d+)/$', board),
 )

@@ -1,0 +1,45 @@
+.taskboard{
+	text-align:center;
+	/*background-color:yellow;*/
+	border: 1px black solid;
+	min-height: 400px;
+	background-color:#FFFFCC;
+}
+
+.taskboard .tasklist{
+	float:left;
+	border:1px blue solid;
+	margin:10px;
+	padding:5px;
+	background-color:gray;
+	color:white;
+	width:250px;
+	min-height:60px;
+}
+
+.taskboard .tasklist .taskcard{
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:15px;
+	padding-right:15px;
+	margin:4px;
+	border-radius:4px;
+	color:black;
+	background-color:white;
+	word-break:break-all;
+	min-height:20px;
+}
+
+.taskcreator{
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:15px;
+	padding-right:15px;
+	margin:4px;
+	border-radius:4px;
+	color:black;
+	background-color:white;
+	word-break:break-all;
+	width:60%;
+}

@@ -5,7 +5,7 @@ app.TeamView = Backbone.View.extend({
 	events:{
 	},
 	initialize:function(){
-		this.teampageView = null
+		this.teamView = null
 		this.team = this.model;	//this.model is passed from outside world
 		//alert(this.team.get('id'));
 		this.listenTo(this.team, "change", this.renderHomePage);
@@ -18,28 +18,28 @@ app.TeamView = Backbone.View.extend({
 	renderHomePage:function(){
 		//alert(this.team.get('id'));
 		this.cleanTeamPage();
-		this.teampageView = new app.TeamHomePageView({model:this.team});
-		this.$el.html(this.teampageView.el);
+		this.teamView = new app.TeamHomePageView({model:this.team});
+		this.$el.html(this.teamView.el);
 	},
 	renderWorkspacePage:function(){
 		this.cleanTeamPage();
-		this.teampageView = new app.TeamWorkplacePageView();
-		this.$el.html(this.teampageView.el);
+		this.teamView = new app.TeamWorkspacePageView({model:this.team});
+		this.$el.html(this.teamView.el);
 	},
 	renderInboxPage:function(){
 		this.cleanTeamPage();
-		this.teampageView = new app.TeamInboxPageView();
-		this.$el.html(this.teampageView.el);
+		this.teamView = new app.TeamInboxPageView();
+		this.$el.html(this.teamView.el);
 	},
 	renderLearnPage:function(){
 		this.cleanTeamPage();
-		this.teampageView = new app.TeamLearnPageView();
-		this.$el.html(this.teampageView.el);
+		this.teamView = new app.TeamLearnPageView();
+		this.$el.html(this.teamView.el);
 	},
 	cleanTeamPage:function(){
-		if(this.teampageView!=null){
-			this.teampageView.remove();
-			this.teampageView = null;
+		if(this.teamView!=null){
+			this.teamView.remove();
+			this.teamView = null;
 		}
 	},
 });
