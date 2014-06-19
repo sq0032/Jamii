@@ -7,7 +7,7 @@ app.MenuView = Backbone.View.extend({
 	events: {
 		"click #user-menu a"		: "openUserPage",
 		"click #team-menu a"		: "openTeamPage",
-		"click #network-menu a"	: "openNewWorkPage",
+		"click #network-menu a"		: "openNewWorkPage",
 	},
 	initialize: function() {
 		

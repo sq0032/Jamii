@@ -34,5 +34,225 @@
         "intro": "This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction This is introduction ", 
         "video": "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/40nFOYGVJtY\" frameborder=\"0\" allowfullscreen></iframe>"
     }
+},
+{
+    "pk": 2, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "user1", 
+        "first_name": "user", 
+        "last_name": "1", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2014-06-11T14:40:17.450Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$AU4AEVKBy4YZ$KiqBZWr09nEiqB4PXI6Y12cWQb5RvhMQig2jA5D+CI0=", 
+        "email": "", 
+        "date_joined": "2014-06-09T18:21:16Z"
+    }
+},
+{
+    "pk": 3, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "user2", 
+        "first_name": "user", 
+        "last_name": "2", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2014-06-09T18:21:24Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$4oHT5pkoYmBK$RzgAkal0OfTQTpRdufeDiGfUteY2AQ6m7vbzeBmlwsM=", 
+        "email": "", 
+        "date_joined": "2014-06-09T18:21:24Z"
+    }
+},
+
+{
+    "pk": 1, 
+    "model": "account.jamiiuser", 
+    "fields": {
+        "birthdate": "2014-06-09", 
+        "sex": "M", 
+        "phone": "adsfsdf", 
+        "role": 1, 
+        "user": 2, 
+        "thumbnail": ""
+    }
+},
+{
+    "pk": 2, 
+    "model": "account.jamiiuser", 
+    "fields": {
+        "birthdate": "2014-06-09", 
+        "sex": "M", 
+        "phone": "adfssafd", 
+        "role": 1, 
+        "user": 1, 
+        "thumbnail": "thumbnail/2-s.jpg"
+    }
+},
+{
+    "pk": 3, 
+    "model": "account.jamiiuser", 
+    "fields": {
+        "birthdate": "2014-06-09", 
+        "sex": "F", 
+        "phone": "adfsdf", 
+        "role": 3, 
+        "user": 3, 
+        "thumbnail": ""
+    }
+},
+{
+    "pk": 1, 
+    "model": "team.team", 
+    "fields": {
+        "name": "Team1", 
+        "introduction": "This is Team 1", 
+        "establish_datetime": "2014-06-09T18:23:15.366Z", 
+        "members": [
+            1, 
+            2
+        ], 
+        "logo": "teamlogo/20140521_meeting_trees_tructure.jpg", 
+        "leader": 1
+    }
+},
+{
+    "pk": 2, 
+    "model": "team.team", 
+    "fields": {
+        "name": "Team 2", 
+        "introduction": "adfasdfewf", 
+        "establish_datetime": "2014-06-09T18:23:36.532Z", 
+        "members": [
+            2, 
+            3
+        ], 
+        "logo": "teamlogo/18df1f6.jpg", 
+        "leader": 3
+    }
+},
+{
+    "pk": 1, 
+    "model": "taskboard.taskboard", 
+    "fields": {
+        "name": "TaskBoard Team1", 
+        "team": 1
+    }
+},
+{
+    "pk": 2, 
+    "model": "taskboard.taskboard", 
+    "fields": {
+        "name": "TaskBoard Team2", 
+        "team": 2
+    }
+},
+{
+    "pk": 1, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 1, 
+        "name": "Idea", 
+        "board": 1
+    }
+},
+{
+    "pk": 2, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 2, 
+        "name": "Todo", 
+        "board": 1
+    }
+},
+{
+    "pk": 3, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 3, 
+        "name": "Doing", 
+        "board": 1
+    }
+},
+{
+    "pk": 4, 
+    "model": "taskboard.tasklist", 
+    "fields": {
+        "order": 4, 
+        "name": "Done", 
+        "board": 1
+    }
+},
+{
+    "pk": 1, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 1", 
+        "create_datetime": "2014-06-19T13:37:50.176Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 1, 
+        "description": ""
+    }
+},
+{
+    "pk": 2, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 2", 
+        "create_datetime": "2014-06-19T13:37:55.492Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 2, 
+        "description": ""
+    }
+},
+{
+    "pk": 3, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 3", 
+        "create_datetime": "2014-06-19T13:38:00.185Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 4, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 4", 
+        "create_datetime": "2014-06-19T13:38:07.108Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 4, 
+        "description": ""
+    }
+},
+{
+    "pk": 5, 
+    "model": "taskboard.taskcard", 
+    "fields": {
+        "name": "Task 5", 
+        "create_datetime": "2014-06-19T13:38:11.796Z", 
+        "list": 1, 
+        "label": "", 
+        "members": [], 
+        "order": 5, 
+        "description": ""
+    }
 }
 ]
