@@ -17,9 +17,14 @@
 	min-height:60px;
 }
 
+.tasklistheader{
+	
+}
+
 .taskcontainer{
-	max-height: 350px;
+	max-height: 320px;
 	overflow-y: auto;
+	min-height: 20px;
 }
 
 .taskcard{

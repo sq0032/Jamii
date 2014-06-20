@@ -72,7 +72,11 @@ app.TaskListView = Backbone.View.extend({
 		//this.render();
 	},
 	render:function(){
-		this.$el.html('<div class="taskcontainer"></div>');
+		var listname 	= this.list.get('name');
+		var header 		= '<div class="tasklistheader">'+listname+'</div>'
+		var container	= '<div class="taskcontainer"></div>';
+		var addcardbutton='<div class="newtaskcard">add card</div>';
+		this.$el.html(header+container+addcardbutton);
 		
 		var that = this;
 		//alert('test');
@@ -82,9 +86,7 @@ app.TaskListView = Backbone.View.extend({
 			//alert(cardview.el);
 			that.$('.taskcontainer').append(cardview.el);
 		});
-		
-		var addcardbutton = '<div class="newtaskcard">add card</div>'
-		this.$el.append(addcardbutton);
+
 	},
 	dropTask:function(event, ui){
 		var cards = this.$(".taskcard");
@@ -102,7 +104,7 @@ app.TaskListView = Backbone.View.extend({
 		alert(this.list.id);
 		var card = new app.TaskCard({'order':n+1,
 									'list':this.list.id});
-		card.url = '/taskboard/card/0/';
+		card.url = '/taskboard/card/0';
 		card.save();
 		//alert(card.get('id'));
 		this.cards.add(card);
@@ -131,7 +133,6 @@ app.TaskBoardView = Backbone.View.extend({
 			//alert(cardview.el);
 			that.$el.append(listview.el);
 		});
-
 		//this.$el.append(this.listview1.el)
 		//		.append(this.listview2.el);
 				//.append(this.listview3.el);
