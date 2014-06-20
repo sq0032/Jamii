@@ -51,6 +51,7 @@ app.TaskListView = Backbone.View.extend({
 	className: 'tasklist',
 	events:{
 		"sortupdate"	:"dropTask",
+		"click .newtaskcard"	:"addNewCard",
 	},
 	initialize:function(){
 		if(typeof(this.model)=='undefined'){
@@ -71,6 +72,7 @@ app.TaskListView = Backbone.View.extend({
 		//this.render();
 	},
 	render:function(){
+		this.$el.html('<div class="taskcontainer"></div>');
 		
 		var that = this;
 		//alert('test');
@@ -78,8 +80,11 @@ app.TaskListView = Backbone.View.extend({
 			//alert(card.get('name'));
 			var cardview = new app.TaskCardView({model:card});
 			//alert(cardview.el);
-			that.$el.append(cardview.el);
+			that.$('.taskcontainer').append(cardview.el);
 		});
+		
+		var addcardbutton = '<div class="newtaskcard">add card</div>'
+		this.$el.append(addcardbutton);
 	},
 	dropTask:function(event, ui){
 		var cards = this.$(".taskcard");
@@ -90,6 +95,18 @@ app.TaskListView = Backbone.View.extend({
 			//$(card).trigger('test');
 		});
 		//this.list.save();
+	},
+	addNewCard:function(){
+		//alert('test');
+		var n = this.$(".taskcard").length;
+		alert(this.list.id);
+		var card = new app.TaskCard({'order':n+1,
+									'list':this.list.id});
+		card.url = '/taskboard/card/0/';
+		card.save();
+		//alert(card.get('id'));
+		this.cards.add(card);
+		this.render();
 	},
 });
 
@@ -147,8 +164,8 @@ app.TeamWorkspacePageView = Backbone.View.extend({
 	renderBoard: function(){
 		this.taskboard = new app.TaskBoardView({model:this.board});
 		this.$el.append(this.taskboard.el);
-		$(".tasklist").sortable({
-			connectWith:".tasklist",
+		$(".taskcontainer").sortable({
+			connectWith:".taskcontainer",
 		});
 	},
 });

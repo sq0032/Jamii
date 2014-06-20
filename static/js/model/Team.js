@@ -2,7 +2,6 @@ var app = app || {};
 
 app.TaskCard = Backbone.Model.extend({
 	defaults:{
-		id			: 'taskcardid',
 		name		: 'taskcard',
 		order		: 0,
 	}

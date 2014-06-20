@@ -17,29 +17,43 @@
 	min-height:60px;
 }
 
-.taskboard .tasklist .taskcard{
-	text-align:left;
-	padding-top:5px;
-	padding-bottom:5px;
-	padding-left:15px;
-	padding-right:15px;
-	margin:4px;
-	border-radius:4px;
-	color:black;
+.taskcontainer{
+	max-height: 350px;
+	overflow-y: auto;
+}
+
+.taskcard{
+	text-align		:left;
+	padding-top		:5px;
+	padding-bottom	:5px;
+	padding-left	:15px;
+	padding-right	:15px;
+	margin			:4px;
+	border-radius	:4px;
+	color			:black;
 	background-color:white;
-	word-break:break-all;
-	min-height:20px;
+	word-break		:break-all;
+	min-height		:20px;
+	cursor			:move;
+	/*float			:left;*/
+	/*clear: both;*/
 }
 
 .taskcreator{
-	padding-top:5px;
-	padding-bottom:5px;
-	padding-left:15px;
-	padding-right:15px;
-	margin:4px;
-	border-radius:4px;
-	color:black;
+	padding-top		:5px;
+	padding-bottom	:5px;
+	padding-left	:15px;
+	padding-right	:15px;
+	margin			:4px;
+	border-radius	:4px;
+	color			:black;
 	background-color:white;
-	word-break:break-all;
-	width:60%;
+	word-break		:break-all;
+	width			:60%;
+}
+
+.newtaskcard{
+	background		:transparent;
+	color			:white;
+	cursor			:pointer;
 }
