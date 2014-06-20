@@ -28,7 +28,11 @@ def cards(request):
         return HttpResponse('post')
     
 def card(request, cardid):
-    if request.method=="POST":
+    if request.method=="DELETE":
+        card = TaskCard.objects.filter(id = cardid)[0]
+        card.delete()
+        return HttpResponse(status = 200)
+    elif request.method=="POST":
         post = json.loads(request.body)
         print post['list']
         name     = post['name']
@@ -38,24 +42,20 @@ def card(request, cardid):
         card     = TaskCard(name = name,
                             list = tasklist,
                             order= order)
-        card.save()
-        
-        card_dic = {'name'  : card.name,
-                    'id'    : card.id,
-                    'order' : card.order}
-        return HttpResponse(json.dumps(card_dic), content_type="application/json")
     elif request.method=="PUT":
         post = json.loads(request.body)
-        id   = post['id']
         order= post['order']
         listid = post['list']
         
-        card = TaskCard.objects.filter(id = id)[0]
+        card = TaskCard.objects.filter(id = cardid)[0]
         card.order  = order
         card.list   = TaskList.objects.filter(id = listid)[0]
-        card.save()
-        return HttpResponse(status = 200)
-    return HttpResponse('ok')
+        
+    card.save()
+    card_dic = {'name'  : card.name,
+                'id'    : card.id,
+                'order' : card.order}
+    return HttpResponse(json.dumps(card_dic), content_type="application/json")
 
 def list(request, listid):
     if request.method=="GET":
