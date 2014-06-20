@@ -44,6 +44,16 @@
 	/*clear: both;*/
 }
 
+.taskcard .glyphicon-remove:hover{
+	color			:red;
+	cursor			:pointer;
+}
+
+.taskcard .glyphicon-remove{
+	float			:right;
+	color			:#F0F0F0;
+}
+
 .taskcreator{
 	padding-top		:5px;
 	padding-bottom	:5px;

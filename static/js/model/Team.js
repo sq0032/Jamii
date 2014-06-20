@@ -12,6 +12,13 @@ app.TaskCards = Backbone.Collection.extend({
 	url		: function(){
 		return '/taskboard/card';
 	},
+	/*
+	update	: function(){
+		options = {
+			success: function(){alert('seccess');}
+		};
+		return Backbone.sync('updata',this, options);
+	},*/
 });
 
 app.TaskList = Backbone.Model.extend({
