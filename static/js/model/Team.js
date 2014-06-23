@@ -2,9 +2,16 @@ var app = app || {};
 
 app.TaskCard = Backbone.Model.extend({
 	defaults:{
-		name		: 'taskcard',
+		name		: 'New task',
 		order		: 0,
-	}
+	},
+	url		:function(){
+		if(typeof(this.id)=='undefined'){
+			return '/taskboard/card/0';
+		}else{
+			return '/taskboard/card/'+this.id;
+		}
+	},
 });
 
 app.TaskCards = Backbone.Collection.extend({

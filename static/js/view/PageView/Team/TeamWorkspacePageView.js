@@ -1,10 +1,13 @@
 var app = app || {};
 
+//Task Card View
 app.TaskCardView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'taskcard',
 	events:{
-		//"click"						: "getName",
+		"click p"					: "editName",
+		"keypress textarea"			: "test",
+		"click button"				: "saveName",
 		"reorder"					: "reorder",
 		"test"						: "test",
 		"click .glyphicon-remove"	: "deleteCard",
@@ -20,43 +23,68 @@ app.TaskCardView = Backbone.View.extend({
 		this.render();
 	},
 	render:function(){
+		//Set variables 
 		var name = this.taskcard.get('name');
 		var id	 = this.taskcard.get('id');
 		var order= this.taskcard.get('order');
 		//alert(this.taskcard.get('name'));
 		
-		var content 	= '<p id="card'+id+'">' +name+ ' order:' +order+ '</p>';
-		var deletebtn 	= '<span class="glyphicon glyphicon-remove"></span>'
-		var html = deletebtn+content;
+		//Set DOM objects
+		//var content 	= '<p id="card'+id+'">' +name+ ' order:' +order+ '</p>';
+		var content 	= '<p id="card'+id+'">' +name+ '</p>';
+		var deletebtn 	= '<span class="glyphicon glyphicon-remove"></span>';
+		var textarea	= '<textarea value="'+name+'"style="display:none"></textarea>';
+		var savebtn		= '<button type="button" class="btn btn-primary btn-sm hide">Save</button>';
+		var cleardiv	= '<div class="clear"></div>';
 		
+		//Render html page
+		var html = deletebtn+content+textarea+savebtn+cleardiv;
 		this.$el.html(html);
 	},
-	getName:function(){
+	editName:function(event){
 		var name = this.taskcard.get('name');
-		var id	 = this.taskcard.cid;
-		var order= this.taskcard.get('order');
-		alert(name+' '+id+' order:' +order);
-		//console.log(name+id);
+		
+		this.$('p').toggle();
+		this.$('span').toggle();
+		this.$('textarea').toggle();
+		this.$('textarea').val(name);
+		this.$('button').toggleClass('hide');
 	},
-	reorder:function(ev,order,listid){
-		this.taskcard.set('order',order+1);
-		this.taskcard.set('list',listid);
-		//alert(listid);
-		//alert(this.taskcard.get('list'));
+	saveName:function(){
+		var name = this.$('textarea').val();
+		//alert(name);
+		this.taskcard.set('name', name);
 		this.taskcard.save();
 		this.render();
 	},
+	reorder:function(ev,order,listid){
+		order = order+1;
+		var cur_order = this.taskcard.get('order');
+		var cur_list  = this.taskcard.get('list');
+		var name = this.taskcard.get('name');
+		console.log(name+' cur:'+cur_order+' '+cur_list);
+		console.log(name+' new:'+order+' '+listid);
+		if(cur_order!=order || cur_list!=listid){
+			this.taskcard.set('order',order);
+			this.taskcard.set('list',listid);
+			//alert(listid);
+			//alert(this.taskcard.get('list'));
+			this.taskcard.save();
+			this.render();
+		}
+	},
 	deleteCard:function(){
-		//this.taskcard.set('name','test');
-		//alert(this.taskcard.get('name'));
 		this.taskcard.destroy();
 		this.remove();
 	},
-	test:function(){
-		//this.taskcard.save();
+	test:function(event){
+		if (event.keyCode==13){
+			this.saveName();
+		}
 	},
 });
 
+//Task List View
 app.TaskListView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'tasklist',
@@ -75,14 +103,12 @@ app.TaskListView = Backbone.View.extend({
 		//this.list.cards = this.cards;
 		this.list.cards.comparator = 'order';
 		this.list.cards.sort();
+
+		//Set listener for collection change
+		//this.listenTo(this.list.cards, "add", this.sortCards);
+		//this.listenTo(this.list.cards, "destroy", this.sortCards);
 		
 		this.render();
-		//this.listenTo(this.list.cards, "reset", this.render);
-		
-		//this.list.cards.fetch({'reset':true});
-		
-		//this.cardview = null;
-		//this.render();
 	},
 	render:function(){
 		var listname 	= this.list.get('name');
@@ -111,19 +137,19 @@ app.TaskListView = Backbone.View.extend({
 	addNewCard:function(){
 		//alert('test');
 		var n = this.$(".taskcard").length;
-		alert(this.list.id);
+		//alert(this.list.id);
 		var card = new app.TaskCard({'order':n+1,
 									'list':this.list.id});
-		card.url = '/taskboard/card/0';
+		//card.url = '/taskboard/card/0';
 		card.save();
 		//alert(card.get('id'));
-		this.list.cards.add(card);
-		this.render();
+		var cardview = new app.TaskCardView({model:card});
+		this.$('.taskcontainer').append(cardview.el);
+		//this.list.cards.add(card);
+		//this.renderlist();
 	},
 	test:function(){
-		this.list.cards.sort();
-		this.renderlist();
-		this.list.save();
+		alert('change');
 	},
 	renderlist: function(){
 		var that = this;
@@ -137,6 +163,7 @@ app.TaskListView = Backbone.View.extend({
 	},
 });
 
+//Task Board View
 app.TaskBoardView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'taskboard',
