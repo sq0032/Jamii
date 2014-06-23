@@ -1,9 +1,13 @@
+div.clear{
+	clear:both;
+}
+
 .taskboard{
 	text-align:center;
 	/*background-color:yellow;*/
 	border: 1px black solid;
 	min-height: 400px;
-	background-color:#FFFFCC;
+	background-color:rgb(35, 113, 159);
 }
 
 .taskboard .tasklist{
@@ -42,6 +46,18 @@
 	cursor			:move;
 	/*float			:left;*/
 	/*clear: both;*/
+}
+
+.taskcard textarea{
+	float			:left;
+}
+
+.taskcard button{
+	float			:right;
+}
+
+.taskcard button.hide{
+	display			:none;
 }
 
 .taskcard .glyphicon-remove:hover{
