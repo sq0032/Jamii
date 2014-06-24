@@ -39,26 +39,31 @@ def card(request, cardid):
         listid   = post['list']
         tasklist = TaskList.objects.filter(id=listid)[0]
         order    = post['order']
+        label    = post['label']
         card     = TaskCard(name = name,
                             list = tasklist,
-                            order= order)
+                            order= order,
+                            label= label)
     elif request.method=="PUT":
         post    = json.loads(request.body)
         name    = post['name']
         order   = post['order']
         listid  = post['list']
+        label   = post['label']
         
         card        = TaskCard.objects.filter(id = cardid)[0]
         card.name   = name
         card.order  = order
         card.list   = TaskList.objects.filter(id = listid)[0]
+        card.label  = label
         
     card.save()
     print card.id
     card_dic = {'name'  : card.name,
                 'id'    : card.id,
                 'order' : card.order,
-                'list'  : card.list.id}
+                'list'  : card.list.id,
+                'label' : card.label}
     return HttpResponse(json.dumps(card_dic), content_type="application/json")
 
 def list(request, listid):
@@ -115,7 +120,8 @@ def board(request, teamid):
                 card_dic = {'id'    : card.id,
                             'name'  : card.name,
                             'order' : card.order,
-                            'list'  : card.list.id}
+                            'list'  : card.list.id,
+                            'label' : card.label}
                 list_dic['cards'].append(card_dic)
             data['lists'].append(list_dic)
         return HttpResponse(json.dumps(data), content_type="application/json")

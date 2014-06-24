@@ -3,6 +3,7 @@ var app = app || {};
 app.TaskCard = Backbone.Model.extend({
 	defaults:{
 		name		: 'New task',
+		label		: 'white',
 		order		: 0,
 	},
 	url		:function(){

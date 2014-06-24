@@ -11,6 +11,7 @@ app.TaskCardView = Backbone.View.extend({
 		"reorder"					: "reorder",
 		"test"						: "test",
 		"click .glyphicon-remove"	: "deleteCard",
+		"click .color-choice"		: "selectColor",
 	},
 	initialize:function(){
 		if(typeof(this.model)=='undefined'){
@@ -27,6 +28,7 @@ app.TaskCardView = Backbone.View.extend({
 		var name = this.taskcard.get('name');
 		var id	 = this.taskcard.get('id');
 		var order= this.taskcard.get('order');
+		var label= this.taskcard.get('label');
 		//alert(this.taskcard.get('name'));
 		
 		//Set DOM objects
@@ -34,11 +36,20 @@ app.TaskCardView = Backbone.View.extend({
 		var content 	= '<p id="card'+id+'">' +name+ '</p>';
 		var deletebtn 	= '<span class="glyphicon glyphicon-remove"></span>';
 		var textarea	= '<textarea value="'+name+'"style="display:none"></textarea>';
+		var colorpanel	= '<div class="color-panel">\
+							<span class="color-choice" style="background-color:white"></span>\
+							<span class="color-choice" style="background-color:red"></span>\
+							<span class="color-choice" style="background-color:yellow"></span>\
+							<span class="color-choice" style="background-color:green"></span>\
+							<span class="color-choice" style="background-color:blue"></span>\
+							<span class="color-choice" style="background-color:purple"></span>\
+							</div>'
 		var savebtn		= '<button type="button" class="btn btn-primary btn-sm hide">Save</button>';
+		var colorlabel	= '<span class="color-label" style="background-color:'+label+'"></span>';
 		var cleardiv	= '<div class="clear"></div>';
 		
 		//Render html page
-		var html = deletebtn+content+textarea+savebtn+cleardiv;
+		var html = deletebtn+content+colorlabel+textarea+savebtn+cleardiv+colorpanel+cleardiv;
 		this.$el.html(html);
 	},
 	editName:function(event){
@@ -49,9 +60,14 @@ app.TaskCardView = Backbone.View.extend({
 		this.$('textarea').toggle();
 		this.$('textarea').val(name);
 		this.$('button').toggleClass('hide');
+		this.$('.color-panel').toggle();
+		this.$('.color-choice').toggle();
 	},
 	saveName:function(){
 		var name = this.$('textarea').val();
+		if(name == ''){
+			name = 'New task';
+		}
 		//alert(name);
 		this.taskcard.set('name', name);
 		this.taskcard.save();
@@ -76,6 +92,13 @@ app.TaskCardView = Backbone.View.extend({
 	deleteCard:function(){
 		this.taskcard.destroy();
 		this.remove();
+	},
+	selectColor:function(event){
+		var color = $(event.target).css('background-color');
+		this.taskcard.set('label',color);
+		
+		this.$('.color-choice').css('border-color','black');
+		$(event.target).css('border-color','red');
 	},
 	test:function(event){
 		if (event.keyCode==13){
@@ -185,6 +208,9 @@ app.TaskBoardView = Backbone.View.extend({
 			//alert(cardview.el);
 			that.$el.append(listview.el);
 		});
+		
+		var divclear = '<div class="clear"></div>'
+		this.$el.append(divclear);
 		//this.$el.append(this.listview1.el)
 		//		.append(this.listview2.el);
 				//.append(this.listview3.el);
@@ -216,7 +242,7 @@ app.TeamWorkspacePageView = Backbone.View.extend({
 	},
 	renderBoard: function(){
 		this.taskboard = new app.TaskBoardView({model:this.board});
-		this.$el.append(this.taskboard.el);
+		this.$("#taskboard-wrap").append(this.taskboard.el);
 		$(".taskcontainer").sortable({
 			connectWith:".taskcontainer",
 		});
