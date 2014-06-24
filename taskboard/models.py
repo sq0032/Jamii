@@ -25,7 +25,7 @@ class TaskCard(models.Model):
     order       = models.IntegerField()
     members     = models.ManyToManyField(User, blank=True, null=True)
     list        = models.ForeignKey(TaskList)
-    label       = models.CharField(max_length=10, blank=True)
+    label       = models.CharField(max_length=10, default="white")
     create_datetime = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
