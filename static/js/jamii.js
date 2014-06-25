@@ -7,9 +7,13 @@ $(function(){
 	$.get("static/template/TeamWorkspacePageView.html", function(data){
 		app.template['TeamWorkspacePageView'] = data;
 	});
-		$.get("static/template/TaskBoardView.html", function(data){
+	$.get("static/template/TaskBoardView.html", function(data){
 		app.template['TaskBoardView'] = data;
 	});
+	$.get("static/template/InboxView.html", function(data){
+		app.template['InboxView'] = data;
+	});
+
 	$(".tasklist").sortable({
 		connectWith:".tasklist",
 	});

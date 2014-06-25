@@ -1,14 +1,15 @@
 var app = app || {};
 
 app.TeamInboxPageView = Backbone.View.extend({
-	tagName: 'div',
+	tagName	: 'div',
+	id		: 'inbox-view',
 	events:{
-	
 	},
 	initialize:function(){
 		this.render();
 	},
 	render: function(){
-		this.$el.html('Inbox');
+		var html = _.template(app.template['InboxView'], {});
+		this.$el.html(html);
 	},
 });

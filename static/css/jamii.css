@@ -2,6 +2,39 @@ div.clear{
 	clear			:both;
 }
 
+/*******************
+ Menu & Nav & Page
+*******************/
+#menu{
+	position		:fixed; 
+	top				:50px; 
+	bottom			:0px; 
+	width			:230px;
+	max-height		:100%; 
+	height			:auto; 
+	border			:#e8e8e8 1px solid;
+}
+
+#page-view{
+	position		:absolute;
+	bottom			:0px;
+	top				:0px;
+	left			:0px;
+	right			:0px;
+	margin-left		:230px;
+	margin-top		:50px;
+}
+
+/*******************
+     TeamPage
+*******************/
+#team-view{
+	
+}
+
+/*******************
+   TeamPage/TaskBoard 
+*******************/
 #taskboard-wrap{
 	/*position		:absolute;
 	right			:0px;*/
@@ -116,4 +149,164 @@ div.clear{
 	background		:transparent;
 	color			:white;
 	cursor			:pointer;
+}
+
+/*******************
+   TeamPage/Inbox 
+*******************/
+#inbox-view{
+/*
+	position		:absolute;
+	left			:0px;
+	right			:0px;
+	top				:0px;
+	bottom			:0px;
+	background		:#e8e8e8;
+	padding			:20px;*/
+}
+
+#inbox-view-header{
+	width			:100%;
+	height			:50px;
+	background-color:#f8f8f8;
+	padding			:10px;
+}
+
+#inbox-search{
+	float			:right;
+	margin-right	:20px;
+	border-radius	:15px;
+}
+
+#msgbox-list{
+	position		:absolute;
+	width			:300px;
+	top				:50px;
+	bottom			:0px;
+	left			:0px;
+	background-color:#e0e0e0;
+	padding			:10px;
+}
+
+#new-message-thread{
+	border			:1px  black;
+	margin-top		:15px;
+	height			:50px;
+	padding			:15px 0px 15px 70px;
+	margin			:10px;
+	background-color:#f0f0f0;
+	border-radius	:20px;
+	cursor			:pointer;
+	color			:#c0c0c0;
+}
+
+#new-message-thread:hover{
+	color			:#000000;
+}
+
+#message-view{
+	position		:absolute;
+	left			:300px;
+	right			:0px;
+	bottom			:0px;
+	top				:50px;
+	background-color:#f0f0f0;
+}
+
+img.media-object{
+	width			:64px;
+	height			:64px;
+}
+
+.media{
+	padding			:0px 10px 0px 10px;
+	margin-right	:-10px;
+	margin-left		:-10px;
+	cursor			:pointer;
+}
+
+.media:hover{
+	background-color:#f4f6f9;
+}
+
+#message-view-header{
+	position		:absolute;
+	border-bottom	:1px solid #d0d0d0;
+	padding			:10px;
+	top				:0px;
+	left			:0px;
+	right			:0px;
+	height			:110px;
+}
+
+#message-create-date{
+	float			:right;
+}
+
+#message-attendants{
+	float			:left;
+	
+}
+#message-subject{
+	float			:left;
+	clear			:both;
+}
+
+#message-view-container{
+	position		:absolute;
+	top				:115px;
+	left			:0px;
+	right			:0px;
+	bottom			:150px;
+	padding			:10px;
+	overflow-y		:scroll;
+	height			:auto;
+}
+
+.message-box{
+	position		:relative;
+	border-bottom	:1px black solid;
+	margin-bottom	:5px;
+}
+
+.message-datetime{
+	float			:right;
+}
+
+.message-poster{
+	float			:left;
+	margin-right	:10px;
+	margin-bottom	:5px;
+}
+
+.message{
+	margin-left		:50px;
+	padding-top		:20px;
+	margin-bottom	:5px;
+	/*float			:left;*/
+	/*
+	position		:absolute;
+	top				:0px;
+	left			:50px;*/
+}
+
+#message-view-footer{
+	position		:absolute;
+	left			:0px;
+	right			:0px;
+	bottom			:0px;
+	padding			:10px 10px 10px 10px;
+	height			:150px;
+}
+
+#message-view-footer textarea{
+	width			:100%;
+	height			:100px;
+	background-color:#f4f4f4;
+	resize			:none;
+}
+
+#message-view-footer button{
+	float			:left;
+	margin-top		:5px;
 }
