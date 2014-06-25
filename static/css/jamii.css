@@ -188,7 +188,7 @@ div.clear{
 	padding			:10px;
 }
 
-#new-message-thread{
+#new-message-button{
 	border			:1px  black;
 	margin-top		:15px;
 	height			:50px;
@@ -200,7 +200,7 @@ div.clear{
 	color			:#c0c0c0;
 }
 
-#new-message-thread:hover{
+#new-message-button:hover{
 	color			:#000000;
 }
 
@@ -245,8 +245,11 @@ img.media-object{
 
 #message-attendants{
 	float			:left;
-	
 }
+#message-attendants img{
+	margin-right	:5px;
+}
+
 #message-subject{
 	float			:left;
 	clear			:both;
