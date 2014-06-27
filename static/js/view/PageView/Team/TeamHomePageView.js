@@ -1,7 +1,8 @@
 var app = app || {};
 
 app.TeamHomePageView = Backbone.View.extend({
-	tagName: 'div',
+	tagName	: 'div',
+	id		: 'team-page',
 	events:{
 	
 	},

@@ -35,15 +35,12 @@ def card(request, cardid):
     elif request.method=="POST":
         post = json.loads(request.body)
         print post['list']
-        name     = post['name']
         listid   = post['list']
         tasklist = TaskList.objects.filter(id=listid)[0]
-        order    = post['order']
-        label    = post['label']
-        card     = TaskCard(name = name,
-                            list = tasklist,
-                            order= order,
-                            label= label)
+        card     = TaskCard(name = post['name'],
+                            order= post['order'],
+                            label= post['label'],
+                            list = tasklist,)
     elif request.method=="PUT":
         post    = json.loads(request.body)
         name    = post['name']

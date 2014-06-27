@@ -1,7 +1,8 @@
 var app = app || {};
 
 app.TeamView = Backbone.View.extend({
-	tagName: 'div',
+	tagName	: 'div',
+	id		: 'team-view',
 	events:{
 	},
 	initialize:function(){

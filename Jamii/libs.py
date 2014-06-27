@@ -1,3 +1,6 @@
+import time
+import datetime
+
 def thumbnail_path(instance, filename):
     try:
         extName = filename.rsplit('.',1)[1]
@@ -45,3 +48,8 @@ def cropit(img):
     box = (upper_x, upper_y, lower_x, lower_y)
     region = img.crop(box)
     return region
+
+def datetime_to_milliseconds(some_datetime_object):
+    timetuple = some_datetime_object.timetuple()
+    timestamp = time.mktime(timetuple)
+    return timestamp * 1000.0

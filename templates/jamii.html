@@ -49,7 +49,7 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 
-	<div id="menu" style="position:fixed; top:50px; bottom:0px; width:230px; max-height:100%; height:auto; border:#e8e8e8 1px solid;">
+	<div id="menu">
 		<!--
 		<button type="button" class="btn btn-default btn-md" style="position:absolute;left:210px; top:50%; z-index:10000">
 			<span class="glyphicon glyphicon-chevron-left"></span>
@@ -66,10 +66,7 @@
 			<a href="#" class="list-group-item">Network</a>
 		</div>
 	</div>
-	<div id="page-view" style="margin-left:230px; padding-top:50px">
-	</div>
-
-
+	<div id="page-view"></div>
 </div>
 
 {% csrf_token %}
@@ -86,6 +83,7 @@
 <script src="{% static 'js/model/Team.js' %}"></script>
 <script src="{% static 'js/model/User.js' %}"></script>
 <script src="{% static 'js/model/MenuItem.js' %}"></script>
+<script src="{% static 'js/model/Inbox.js' %}"></script>
 
 <!-- Load Backbone 1-level Views-->
 <script src="{% static 'js/view/PageView/Team/TeamHomePageView.js' %}"></script>
