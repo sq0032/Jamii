@@ -11,10 +11,11 @@ urlpatterns = patterns('',
     # url(r'^$', 'Jamii.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/?', include(admin.site.urls)),
     url(r'^account/', include('account.urls')),
     url(r'^team/', include('team.urls')),
     url(r'^taskboard/', include('taskboard.urls')),
+    url(r'^inbox/', include('inbox.urls')),
     
     #test function
     url(r'^test/$', test),

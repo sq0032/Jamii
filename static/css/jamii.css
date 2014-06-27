@@ -204,13 +204,19 @@ div.clear{
 	color			:#000000;
 }
 
-#message-view{
+#message-view,
+#new-message-view{
 	position		:absolute;
 	left			:300px;
 	right			:0px;
 	bottom			:0px;
 	top				:50px;
 	background-color:#f0f0f0;
+}
+
+#new-message-view input{
+	display			:block;
+	margin-bottom	:10px;
 }
 
 img.media-object{
@@ -255,15 +261,36 @@ img.media-object{
 	clear			:both;
 }
 
-#message-view-container{
+#message-view-container,
+#user-tag-container{
 	position		:absolute;
-	top				:115px;
+	top				:110px;
 	left			:0px;
 	right			:0px;
 	bottom			:150px;
 	padding			:10px;
 	overflow-y		:scroll;
 	height			:auto;
+}
+
+.user-tag{
+	margin-bottom	:10px;
+	width			:100%;
+	z-index			:1000000;
+}
+.user-tag:hover{
+	background-color:#f4f6f9;
+}
+
+.user-tag.selected{
+	background-color:#f4f6f9;
+}
+
+.user-tag img{
+	float			:left;
+	width			:64px;
+	height			:64px;
+	z-index			:-10;
 }
 
 .message-box{
@@ -284,7 +311,8 @@ img.media-object{
 
 .message{
 	margin-left		:50px;
-	padding-top		:20px;
+	margin-right	:50px;
+	padding-top		:0px;
 	margin-bottom	:5px;
 	/*float			:left;*/
 	/*

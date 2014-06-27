@@ -1,5 +1,7 @@
 $(function(){
 	app.appview = new app.appView();
+	
+	//Fetch backbone templates
 	app.template = {};
 	$.get("static/template/TeamHomePageView.html", function(data){
 		app.template['TeamHomePageView'] = data;
@@ -16,11 +18,6 @@ $(function(){
 		app.template['InboxView'] = JSON.parse(JSON.parse(data_str));
 	});
 	
-	
-	$(".tasklist").sortable({
-		connectWith:".tasklist",
-	});
-	
 	String.prototype.escapeSpecialChars = function() {
 		return this.replace(/\\n/g, "")
 				   .replace(/\\'/g, "")
@@ -31,6 +28,18 @@ $(function(){
 				   .replace(/\\b/g, "")
 				   .replace(/\\f/g, "");
 	};
+	/*
+	$.get("/inbox/msgbox", function(data){
+		app.test = data;
+	});
+	*/
+	
+	/*
+	$(".tasklist").sortable({
+		connectWith:".tasklist",
+	});
+	*/
+
 	
 	function getCookie(name) {
 		var cookieValue = null;

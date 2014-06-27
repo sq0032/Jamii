@@ -14,7 +14,6 @@ class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-
 def main(request):
     if request.user.is_authenticated():
         return render(request, 'jamii.html')
@@ -35,3 +34,4 @@ def main(request):
             introduction        = intro[0].intro
             introduction_video  = intro[0].video
         return render(request, 'login.html', locals())
+    
