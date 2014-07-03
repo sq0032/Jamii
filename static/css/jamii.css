@@ -186,6 +186,7 @@ div.clear{
 	left			:0px;
 	background-color:#e0e0e0;
 	padding			:10px;
+	overflow-y		:scroll;
 }
 
 #new-message-button{
@@ -283,7 +284,7 @@ img.media-object{
 }
 
 .user-tag.selected{
-	background-color:#f4f6f9;
+	background-color:#e4e6e9;
 }
 
 .user-tag img{
@@ -291,6 +292,7 @@ img.media-object{
 	width			:64px;
 	height			:64px;
 	z-index			:-10;
+	margin-right	:10px;
 }
 
 .message-box{

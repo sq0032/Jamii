@@ -17,12 +17,14 @@
 		
 		"box":
 		"<a class='pull-left' href='#'>
-			<img class='media-object' src='/media/<%=msgBox.attendants[0].thumbnail%>' alt='<%=msgBox.attendants[0].name%>'>
+			<img class='media-object' src='/media/<%=msgBox.thumbnail%>'>
 		</a>
 		<div class='media-body'>
 			<h4 class='media-heading'>
-				<% _.each(msgBox.attendants, function(attendant) { %>
-					<%=attendant.name%>  
+				<% _.each(msgBox.attendants, function(attendant, index) { %>
+					<% if(index>0){ %> 
+						<%=attendant.name%>
+					<% } %>
 				<% }); %>
 			</h4>
 			<%= msgBox.subject %>
