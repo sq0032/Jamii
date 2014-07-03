@@ -56,9 +56,13 @@ def messages(request, msgbox_id):
         #print message
         return HttpResponse(json.dumps(message_dic), content_type="application/json")        
 
+
+#GET: fetch message box list
+#POST: create a new message box with a new piece of message
 def msgboxes(request):
     if request.method == 'GET':
-        msgboxes  = MsgBox.objects.filter(attendants = request.user)
+        print request.user
+        msgboxes  = MsgBox.objects.filter(attendants = request.user.jamiiuser).extra(order_by = ['-update_datetime'])
         msgbox_dic = []
         for msgbox in msgboxes:
             attendants = msgbox.attendants.all()
@@ -67,14 +71,19 @@ def msgboxes(request):
                 temp_att = {'name'      : attendant.user.username,
                             'thumbnail' : attendant.thumbnail.name}
                 temp_atts.append(temp_att)
-                
-            temp_msgbox = {'id'             : msgbox.id,
-                        'subject'        : msgbox.subject,
-                        'create_datetime': str(msgbox.create_datetime),
-                        'update_datetime': str(msgbox.update_datetime),
-                        'attendants'     : temp_atts}
+                if attendant != request.user.jamiiuser:
+                    msgbox_thumb = attendant.thumbnail.name
+                    
+            temp_msgbox = { 'id'             : msgbox.id,
+                            'subject'        : msgbox.subject,
+                            'create_datetime': str(msgbox.create_datetime),
+                            'update_datetime': str(msgbox.update_datetime),
+                            'attendants'     : temp_atts,
+                            'thumbnail'      : msgbox_thumb}
+            print temp_msgbox
             msgbox_dic.append(temp_msgbox)
         return HttpResponse(json.dumps(msgbox_dic), content_type="application/json")
+    
     elif request.method == 'POST':
         post        = json.loads(request.body)
         attendants  = JamiiUser.objects.filter(id__in = post['attendants'])
@@ -87,11 +96,28 @@ def msgboxes(request):
                               message   = post['message'],
                               msgbox    = msgbox)
         message.save()
+        
+        #Return new msgbox JSON
+        temp_atts = []
+        for attendant in attendants:
+            temp_att = {'name'      : attendant.user.username,
+                        'thumbnail' : attendant.thumbnail.name}
+            temp_atts.append(temp_att)
+            if attendant != request.user.jamiiuser:
+                msgbox_thumb = attendant.thumbnail.name
+                
+        msgbox_dic = {  'id'             : msgbox.id,
+                        'subject'        : msgbox.subject,
+                        'create_datetime': str(msgbox.create_datetime),
+                        'update_datetime': str(msgbox.update_datetime),
+                        'attendants'     : temp_atts,
+                        'thumbnail'      : msgbox_thumb}
+            
+        return HttpResponse(json.dumps(msgbox_dic), content_type="application/json")
 
-        return HttpResponse({}, content_type="application/json")
-
+#fetch user tags for new inbox message attendants
 def usertag(request):
-    users = JamiiUser.objects.filter().exclude(user = request.user.jamiiuser)
+    users = JamiiUser.objects.filter().exclude(user = request.user)
     
     users_dic = []
     for user in users:

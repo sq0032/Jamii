@@ -71,7 +71,6 @@ app.InboxMessageView = Backbone.View.extend({
 			//this.messages.add(message);
 			//this.renderMessage(message);
 		}
-		
 	}
 });
 
@@ -85,7 +84,11 @@ app.InboxNewMessageView = Backbone.View.extend({
 	},
 	initialize:function(){
 		this.render();
+		this.msgBoxes = this.collection;
+		console.log(msgBoxes);
 		var that = this;
+		
+		//get all Jamii user as new inbox message receivers (test purpose)
 		$.get("/inbox/user", function(data){
 			that.usertag = data;
 			that.renderUserTags();
@@ -109,7 +112,7 @@ app.InboxNewMessageView = Backbone.View.extend({
 		}
 	},
 	selectUser:function(event){
-		aaa =event;
+
 		var that = this;
 		var $target = $(event.currentTarget);
 		if($target.hasClass('selected')){
@@ -132,22 +135,38 @@ app.InboxNewMessageView = Backbone.View.extend({
 		}*/
 	},
 	sendMessage:function(){
+		var that = this;
+	
 		var attendants 	= this.user_tag_ids;
 		attendants.push(app.user.id);
 		var message		= $("textarea").val();
 		var subject		= $("#message-subject-input").val();
 		
-		var msgbox = new app.MsgBox({'attendants' 	: attendants,
-									 'message'		: message,
-									 'subject'		: subject});
-		msgbox.save();
-		
-		this.user_tag_ids 	= [];
-		this.user_tags		= [];
-		this.$('input:first').val('');
-		this.$('#message-subject-input').val('');
-		this.$('textarea').val('');
-		this.$('.user-tag').removeClass('selected');
+		if(attendants.length>0 &&
+		   $.trim(message)!='' &&
+		   $.trim(subject)!=''){
+			var msgbox = new app.MsgBox({'attendants' 	: attendants,
+										 'message'		: message,
+										 'subject'		: subject});
+										 
+			msgbox.save(null,{
+				success: function(model, response){
+					that.msgBoxes.add(model);
+				},
+				error: function(model, response){
+					alert('error');
+				}
+			});
+			
+			this.user_tag_ids 	= [];
+			this.user_tags		= [];
+			this.$('input:first').val('');
+			this.$('#message-subject-input').val('');
+			this.$('textarea').val('');
+			this.$('.user-tag').removeClass('selected');
+		}else{
+			alert('')
+		}
 		//alert('send');
 	},
 });
@@ -191,14 +210,16 @@ app.InboxMsgBoxListView = Backbone.View.extend({
 		this.msgBoxes = options.msgBoxes;
 		
 		this.listenTo(this.msgBoxes, 'reset', this.render);
+		this.listenTo(this.msgBoxes, 'add', this.renderMsgBox);
 		//alert(options.collection);
 		//this.render();
 	},
 	render:function(){
 		var that = this;
 		
-		this.msgBoxes.each(function(msgBox){
-			var msgBoxView = new app.InboxMsgBoxView({model:msgBox});
+		this.msgBoxes.each(function(msgbox){
+			//that.renderMsgBox(msgbox);
+			var msgBoxView = new app.InboxMsgBoxView({model:msgbox});
 			msgBoxView.parentView = that;
 			that.$el.append(msgBoxView.el);
 		});
@@ -206,12 +227,18 @@ app.InboxMsgBoxListView = Backbone.View.extend({
 		var new_msg = _.template(app.template['InboxView']['list']['new-message-button'],{});
 			this.$el.prepend(new_msg);
 	},
+	renderMsgBox:function(msgbox){
+		var msgBoxView = new app.InboxMsgBoxView({model:msgbox});
+		msgBoxView.parentView = this;
+		this.$('#new-message-button').after(msgBoxView.el);
+		msgBoxView.$el.trigger('click');
+	},
 	newInboxMessage:function(){
 		var InboxView = this.parentView;
 		if(InboxView.inboxMessageView){
 			InboxView.inboxMessageView.remove();
 		}
-		InboxView.inboxMessageView = new app.InboxNewMessageView({});
+		InboxView.inboxMessageView = new app.InboxNewMessageView({collection:this.msgBoxes});
 		InboxView.renderMessageView();
 	},
 });

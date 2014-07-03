@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     url(r'^card$', cards),
     url(r'^card/(\d+)$', card),
     url(r'^list/(\d+)/$', list),
-    url(r'^(\d+)/$', board),
+    url(r'^(\d+)/?$', board),
 )

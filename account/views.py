@@ -27,7 +27,7 @@ def user(request):
     #t           = template.Template('<img src={{MEDIA_URL}}{{thumbnail}}/>')
     #html        = t.render(c)
         data = {}
-        data['id']          = request.user.id
+        data['id']          = request.user.jamiiuser.id
         data['name']        = request.user.username
         data['first_name']  = request.user.first_name
         data['last_name']   = request.user.last_name
