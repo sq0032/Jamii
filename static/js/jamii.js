@@ -1,5 +1,43 @@
 $(function(){
+	//Create Jamii app
 	app.appview = new app.appView();
+	
+	//Test session
+	/*
+	var treeY 		= $("#personal-view-tree").position().top;
+	var pitchesY 	= $("#personal-view-pitches").position().top;
+	var milestonesY = $("#personal-view-milestones").position().top;
+		
+	$(window).resize(function(){
+		treeY 		= $("#personal-view-tree").position().top;
+		pitchesY 	= $("#personal-view-pitches").position().top;
+		milestonesY = $("#personal-view-milestones").position().top;
+	});
+
+	//alert(milestonesY);
+	$(".nav-tabs li").click(function(){
+		var id = $(this).find("a").attr('link');
+		var y = 0;
+		//alert(id);
+		switch(id){
+			case "personal-view-tree":
+				y = treeY;
+				break;
+			case "personal-view-pitches":
+				y = pitchesY;
+				break;
+			case "personal-view-milestones":
+				y = milestonesY;
+				break;
+		}
+		var cur_y = $("#personal-view-container").scrollTop();
+		var move_y= y-cur_y;
+		$("#personal-view-container").animate({
+			scrollTop: cur_y + move_y
+		},1000);
+	});
+	*/
+
 	
 	//Fetch backbone templates
 	app.template = {};
@@ -18,6 +56,12 @@ $(function(){
 		app.template['InboxView'] = JSON.parse(JSON.parse(data_str));
 	});
 	
+	$.get("static/template/PersonalView.tpl", function(data){
+		var data_str = JSON.stringify(data).escapeSpecialChars();
+		app.template['PersonalView'] = JSON.parse(JSON.parse(data_str));
+		//app.template['PersonalView'] = data;
+	});
+	
 	String.prototype.escapeSpecialChars = function() {
 		return this.replace(/\\n/g, "")
 				   .replace(/\\'/g, "")
@@ -28,19 +72,9 @@ $(function(){
 				   .replace(/\\b/g, "")
 				   .replace(/\\f/g, "");
 	};
-	/*
-	$.get("/inbox/msgbox", function(data){
-		app.test = data;
-	});
-	*/
 	
-	/*
-	$(".tasklist").sortable({
-		connectWith:".tasklist",
-	});
-	*/
-
 	
+	//Setting csrftoken for backbone Ajax request
 	function getCookie(name) {
 		var cookieValue = null;
 		if (document.cookie && document.cookie != '') {

@@ -48,7 +48,8 @@
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-
+	
+	<!-- MENU -->
 	<div id="menu">
 		<!--
 		<button type="button" class="btn btn-default btn-md" style="position:absolute;left:210px; top:50%; z-index:10000">
@@ -66,7 +67,11 @@
 			<a href="#" class="list-group-item">Network</a>
 		</div>
 	</div>
-	<div id="page-view"></div>
+	
+	<!-- PAGE -->
+	<div id="page-view">
+		
+	</div>
 </div>
 
 {% csrf_token %}
@@ -74,6 +79,7 @@
 <!-- Load Libaries -->
 <script src="{% static 'js/lib/jquery-1.11.1.js' %}"></script>
 <script src="{% static 'js/lib/jquery-ui-1.10.4.custom.min.js' %}"></script>
+<script src="{% static 'js/lib/jquery.fullPage.min.js' %}"></script>
 <script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
 <script src="{% static 'js/lib/underscore-min.js' %}"></script>
 <script src="{% static 'js/lib/backbone-min.js' %}"></script>
@@ -93,6 +99,7 @@
 
 <!-- Load Backbone 2-level Views-->
 <script src="{% static 'js/view/PageView/Team/TeamView.js' %}"></script>
+<script src="{% static 'js/view/PageView/Personal/PersonalView.js' %}"></script>
 
 <!-- Load Backbone 3-level Views-->
 <script src="{% static 'js/view/NavView.js' %}"></script>

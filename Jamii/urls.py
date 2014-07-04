@@ -23,4 +23,5 @@ urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.BASE_DIR, 'media/')}),
     
     url(r'^$', main),
+    url(r'^logout$', logout),
 )
