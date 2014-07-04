@@ -44,7 +44,7 @@ app.NavView = Backbone.View.extend({
 		alert('open setting page');
 	},
 	signout:function(){
-		alert('user sign out');
+		window.location.assign("/logout");
 	},
 	
 	//Team Menu

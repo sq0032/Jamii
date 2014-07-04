@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django import forms
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
 from models import JamiiIntroduction
 
@@ -35,3 +36,8 @@ def main(request):
             introduction_video  = intro[0].video
         return render(request, 'login.html', locals())
     
+#Logout account
+@login_required
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
