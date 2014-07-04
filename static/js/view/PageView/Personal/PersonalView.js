@@ -1,51 +1,101 @@
 var app = app || {};
 
-//InboxHeaderView
-/*
-app.InboxHeaderView = Backbone.View.extend({
+//PersonalMilestonesView
+app.PersonalMilestonesView = Backbone.View.extend({
 	tagName	: 'div',
-	id		: 'inbox-view-header',
-	events:{
+	id		: 'personal-view-milestones',
+	events	:{
 	},
 	initialize:function(){
 		this.render();
 	},
 	render:function(){
-		var header = _.template(app.template['InboxView']['header'],{});
-		this.$el.html(header);
-	},
+		var html = _.template(app.template['PersonalView']['milestones'], {});
+		this.$el.html(html);
+	}
 });
-*/
 
-//TeamInboxPageView
+//PersonalPitchesView
+app.PersonalPitchesView = Backbone.View.extend({
+	tagName	: 'div',
+	id		: 'personal-view-pitches',
+	events	:{
+	},
+	initialize:function(){
+		this.render();
+	},
+	render:function(){
+		var html = _.template(app.template['PersonalView']['pitches'], {});
+		this.$el.html(html);
+	}
+});
+
+//PersonalTreeView
+app.PersonalTreeView = Backbone.View.extend({
+	tagName	: 'div',
+	id		: 'personal-view-tree',
+	events	:{
+	},
+	initialize:function(){
+		this.render();
+	},
+	render:function(){
+		var html = _.template(app.template['PersonalView']['tree'], {});
+		this.$el.html(html);
+	}
+});
+
+//PersonalView
 app.PersonalView = Backbone.View.extend({
 	tagName	: 'div',
 	id		: 'personal-view',
 	events:{
+		'click a'		: 'slideView',
 	},
 	initialize:function(){
-		this.msgBoxes	= new app.MsgBoxes();
-		this.msgBoxes.fetch({'reset':true});
+		//Create sub views
+		this.personaltreeView 		= new app.PersonalTreeView();
+		this.personalpitchesView 	= new app.PersonalPitchesView();
+		this.personalmilestonesView = new app.PersonalMilestonesView();
 		
-		msgBoxes	= new app.MsgBoxes();
-		msgBoxes.fetch({'reset':true});
+		//Create sub view anchors
+		this.treeY			= 0;
+		this.pitchesY		= 0;
+		this.milestonesY	= 0;
 		
-		this.inboxHeaderView 	= new app.InboxHeaderView();
-		this.inboxHeaderView.parentView = this;
-		this.inboxMsgListView 	= new app.InboxMsgBoxListView({'msgBoxes':this.msgBoxes});
-		this.inboxMsgListView.parentView = this;
-		this.inboxMessageView 	= new app.InboxMessageView();
-		//this.inboxMessageView.parentView = this;
 		this.render();
 	},
 	render: function(){
-		//var html = _.template(app.template['InboxView'], {});
-		//this.$el.html(html);
-		this.$el.append(this.inboxHeaderView.el);
-		this.$el.append(this.inboxMsgListView.el);
-		this.$el.append(this.inboxMessageView.el);
+		var html = _.template(app.template['PersonalView']['main-frame'], {});
+		this.$el.html(html);
+		
+		this.$('#personal-view-container').append(this.personaltreeView.el);
+		this.$('#personal-view-container').append(this.personalpitchesView.el);
+		this.$('#personal-view-container').append(this.personalmilestonesView.el);
 	},
-	renderMessageView: function(){
-		this.$el.append(this.inboxMessageView.el);
+	slideView: function(ev){
+		var id = $(ev.target).attr('link');
+		this.treeY 		= this.$("#personal-view-tree").position().top;
+		this.pitchesY 	= this.$("#personal-view-pitches").position().top;
+		this.milestonesY= this.$("#personal-view-milestones").position().top;
+		
+		var y = 0;
+		var that = this;
+		switch(id){
+			case "personal-view-tree":
+				y = that.treeY;
+				break;
+			case "personal-view-pitches":
+				y = that.pitchesY;
+				break;
+			case "personal-view-milestones":
+				y = that.milestonesY;
+				break;
+		}
+		
+		var cur_y = this.$("#personal-view-container").scrollTop();
+		this.$("#personal-view-container").animate({
+			scrollTop: cur_y + y
+		},1000);
 	},
 });

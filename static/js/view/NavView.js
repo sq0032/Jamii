@@ -32,7 +32,11 @@ app.NavView = Backbone.View.extend({
 	},
 	
 	openPersonalPage: function(){
-		alert('open personal page');
+		//alert('open personal page');
+		if(app.appview.pageView.contentView==null||
+		   app.appview.pageView.contentView.el.id!='personal-view'){
+			app.appview.pageView.renderPersonalView();
+		}
 	},
 	openNotification: function(){
 		alert('open notification box');
@@ -49,26 +53,27 @@ app.NavView = Backbone.View.extend({
 	
 	//Team Menu
 	openTeamHomePage:function(){
-		if(app.appview.pageView.contentView==null){
+		if(app.appview.pageView.contentView==null||
+		   app.appview.pageView.contentView.el.id!='team-view'){
 			app.appview.pageView.renderTeamPage();
 		}
 		app.appview.pageView.contentView.renderHomePage();
 	},
 	openTeamWorkspace:function(){
-		if(app.appview.pageView.contentView==null){
-			app.appview.pageView.renderTeamPage();
+		if(app.appview.pageView.contentView==null||
+		   app.appview.pageView.contentView.el.id!='team-view'){
 		}
 		app.appview.pageView.contentView.renderWorkspacePage();
 	},
 	openTeamInbox:function(){
-		if(app.appview.pageView.contentView==null){
-			app.appview.pageView.renderTeamPage();
+		if(app.appview.pageView.contentView==null||
+		   app.appview.pageView.contentView.el.id!='team-view'){
 		}
 		app.appview.pageView.contentView.renderInboxPage();
 	},
 	openTeamLearn:function(){
-		if(app.appview.pageView.contentView==null){
-			app.appview.pageView.renderTeamPage();
+		if(app.appview.pageView.contentView==null||
+		   app.appview.pageView.contentView.el.id!='team-view'){
 		}
 		app.appview.pageView.contentView.renderLearnPage();
 	},

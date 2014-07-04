@@ -24,6 +24,11 @@ app.PageView = Backbone.View.extend({
 		this.contentView = new app.TeamView({model:team});
 		this.$el.html(this.contentView.el);
 	},
+	renderPersonalView:function(){
+		this.cleanViews();
+		this.contentView = new app.PersonalView();
+		this.$el.html(this.contentView.el);
+	},
 	renderNewsFeed: function(){
 		this.cleanViews();
 		this.$el.html('NewsFeed');

@@ -3,6 +3,7 @@ $(function(){
 	app.appview = new app.appView();
 	
 	//Test session
+	/*
 	var treeY 		= $("#personal-view-tree").position().top;
 	var pitchesY 	= $("#personal-view-pitches").position().top;
 	var milestonesY = $("#personal-view-milestones").position().top;
@@ -35,8 +36,8 @@ $(function(){
 			scrollTop: cur_y + move_y
 		},1000);
 	});
-	
-	//$('#personal-view-container').fullpage();
+	*/
+
 	
 	//Fetch backbone templates
 	app.template = {};
@@ -53,6 +54,12 @@ $(function(){
 	$.get("static/template/InboxView.tpl", function(data){
 		var data_str = JSON.stringify(data).escapeSpecialChars();
 		app.template['InboxView'] = JSON.parse(JSON.parse(data_str));
+	});
+	
+	$.get("static/template/PersonalView.tpl", function(data){
+		var data_str = JSON.stringify(data).escapeSpecialChars();
+		app.template['PersonalView'] = JSON.parse(JSON.parse(data_str));
+		//app.template['PersonalView'] = data;
 	});
 	
 	String.prototype.escapeSpecialChars = function() {
