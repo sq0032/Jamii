@@ -3,6 +3,7 @@ var app = app || {};
 //PersonalMilestonesView
 app.PersonalMilestonesView = Backbone.View.extend({
 	tagName	: 'div',
+	className:'full-page',
 	id		: 'personal-view-milestones',
 	events	:{
 	},
@@ -18,6 +19,7 @@ app.PersonalMilestonesView = Backbone.View.extend({
 //PersonalPitchesView
 app.PersonalPitchesView = Backbone.View.extend({
 	tagName	: 'div',
+	className:'full-page',
 	id		: 'personal-view-pitches',
 	events	:{
 	},
@@ -33,6 +35,7 @@ app.PersonalPitchesView = Backbone.View.extend({
 //PersonalTreeView
 app.PersonalTreeView = Backbone.View.extend({
 	tagName	: 'div',
+	className:'full-page',
 	id		: 'personal-view-tree',
 	events	:{
 	},
@@ -50,7 +53,7 @@ app.PersonalView = Backbone.View.extend({
 	tagName	: 'div',
 	id		: 'personal-view',
 	events:{
-		'click a'		: 'slideView',
+		'click a'		: 'moveTo',
 	},
 	initialize:function(){
 		//Create sub views
@@ -73,7 +76,7 @@ app.PersonalView = Backbone.View.extend({
 		this.$('#personal-view-container').append(this.personalpitchesView.el);
 		this.$('#personal-view-container').append(this.personalmilestonesView.el);
 	},
-	slideView: function(ev){
+	moveTo: function(ev){
 		var id = $(ev.target).attr('link');
 		this.treeY 		= this.$("#personal-view-tree").position().top;
 		this.pitchesY 	= this.$("#personal-view-pitches").position().top;
