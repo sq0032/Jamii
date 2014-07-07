@@ -33,8 +33,7 @@ body{
      TeamPage
 *******************/
 #team-view{
-	overflow-y		:scroll;
-	border			:red 1px solid;
+	position		:relative;
 	height			:100%;
 }
 
@@ -363,7 +362,8 @@ img.media-object{
 	overflow-y		:hidden;
 }
 
-#personal-view-container{
+#personal-view-container,
+#team-view-container{
 	position		:absolute;
 	overflow-y		:auto;
 	right			:0px;
@@ -373,9 +373,7 @@ img.media-object{
 	border			:1px red solid;
 }
 
-#personal-view-tree,
-#personal-view-pitches,
-#personal-view-milestones{
+.full-page{
 	width			:100%;
 	height			:100%;
 	border			:1px black solid;

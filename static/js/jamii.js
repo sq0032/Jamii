@@ -41,8 +41,9 @@ $(function(){
 	
 	//Fetch backbone templates
 	app.template = {};
-	$.get("static/template/TeamHomePageView.html", function(data){
-		app.template['TeamHomePageView'] = data;
+	$.get("static/template/TeamHomePageView.tpl", function(data){
+		var data_str = JSON.stringify(data).escapeSpecialChars();
+		app.template['TeamHomePageView'] = JSON.parse(JSON.parse(data_str));
 	});
 	$.get("static/template/TeamWorkspacePageView.html", function(data){
 		app.template['TeamWorkspacePageView'] = data;
