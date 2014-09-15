@@ -7,7 +7,7 @@
 		</ul>
 	</div>
 	<input id='inbox-search' type='text' placeholder=' search message'></input>",
-
+	
 	"list":
 	{
 		"new-message-button":
@@ -30,7 +30,7 @@
 			<%= msgBox.subject %>
 		</div>"
 	},
-
+	
 	"message-view":
 	{
 		"header":
@@ -46,10 +46,10 @@
 			</h4>
 			<div class='clear'></div>
 		</div>",
-
+		
 		"container":
 		"<div id='message-view-container'></div>",
-
+		
 		"message":
 		"<div class='message-box'>
 			<div class='message-poster'>
@@ -85,10 +85,10 @@
 			<input id='message-subject-input' type='text' class='form-control' placeholder='subject'></input>
 			<div class='clear'></div>
 		</div>",
-
+		
 		"container":
 		"<div id='user-tag-container'></div>",
-
+		
 		"user-tag":
 		"<div class='user-tag'>
 			

@@ -219,6 +219,7 @@ app.TaskBoardView = Backbone.View.extend({
 
 app.TeamWorkspacePageView = Backbone.View.extend({
 	tagName: 'div',
+	id: 'workspace-page',
 	events:{
 	
 	},

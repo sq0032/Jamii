@@ -1,12 +1,20 @@
 {
 	"frame":
 		"<ul class='nav-tabs'>
-			<li><a link='team-view-main'>Main</a></li>
-			<li><a link='team-view-tree'>Tree</a></li>
-			<li><a link='team-view-pitches'>Pitches</a></li>
-			<li><a link='team-view-milestones'>Milestones</a></li>
+			<li><a link='team-view-main'>Home</a></li>
+			<li><a link='team-view-workspace'>Taskboard</a></li>
+			<li><a link='team-view-inbox'>Inbox</a></li>
+			<li><a link='team-view-files'>Shared files</a></li>
 		</ul>
 		<div id='team-view-container'>
+			<div id='team-view-main'>
+			</div>
+			<div id='team-view-workspace' style='display:none'>
+			</div>
+			<div id='team-view-inbox' style='display:none'>
+			</div>
+			<div id='team-view-files' style='display:none'>
+			</div>
 		</div>",
 	"footer":
 		"<div style='height:50px'></div>
@@ -20,15 +28,15 @@
 		</div>",
 	"main":
 		"<h2>
-			<h1><%=name%></h1>
+			<%=team.get('name')%>
 		</h2>
 		<div id='team-intro'>
-			Nam consequat accumsan volutpat. Maecenas cursus laoreet magna, eget interdum leo molestie et. Proin congue quam dui. Nullam mollis tellus in quam lobortis, ut iaculis purus cursus. Mauris ante elit, rhoncus quis facilisis accumsan, malesuada at ipsum. Sed magna ante, facilisis lobortis eros quis, tristique accumsan augue. Suspendisse eget neque interdum, ultrices dolor sit amet, accumsan elit. Vestibulum nisl libero, posuere eget tempor vel, mattis at eros. Duis lacinia velit at magna euismod, nec malesuada leo vestibulum. Fusce non lorem vel dolor suscipit egestas. Mauris luctus tortor nec lacinia auctor. Praesent ornare rhoncus elementum.
+			<%=team.get('introduction')%>
 		</div>",
 		
 	"tree":
 		"<h2>
-			Pitches
+			Tree
 		</h2>",
 		
 	"pitches":

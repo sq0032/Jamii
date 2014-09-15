@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/jamii.css' %}">
 </head>
 <body>
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="e82l2ankj2uy71n"></script>
 
 <div id="app">
 <!--
@@ -22,16 +23,18 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="#">Jamii</a>
+		  <a class="navbar-brand" href="#">Jamii (Test version)</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<!--
 			<div id="team-menu" style="position:fixed; left:230px">
 			  <a id="team-menu-home" type="button" href="#team" class="btn btn-default navbar-btn">Home</a>
 			  <a id="team-menu-learn" type="button" href="#team/learn" class="btn btn-default navbar-btn">Learn</a>
 			  <a id="team-menu-workspace" type="button" href="#team/workspace" class="btn btn-default navbar-btn">WorkSpace</a>
 			  <a id="team-menu-inbox" type="button" href="#team/inbox" class="btn btn-default navbar-btn">Inbox</a>
 			</div>
+		-->
 		  <ul id="user-navview" class="nav navbar-nav navbar-right">
 			<li><a id="user-navview-thumbnail" href="#" style="padding:5px"><img src="{{MEDIA_URL}}{{user.jamiiuser.thumbnail}}" alt="..." class="img-circle" height="40px"></a></li>
 			<li class="dropdown">
@@ -41,7 +44,7 @@
 				<li><a id="user-navview-inbox"href="#"><span class="badge pull-right">4</span>Inbox</a></li>
 				<li><a id="user-navview-setting" href="#">Settings</a></li>
 				<li class="divider"></li>
-				<li><a id="user-navview-signout" href="#">sign out</a></li>
+				<li><a id="user-navview-signout" href="#">log out</a></li>
 			  </ul>
 			</li>
 		  </ul>
@@ -56,16 +59,20 @@
 			<span class="glyphicon glyphicon-chevron-left"></span>
 		</button>
 		-->
+		<!--
 		<div id="user-menu">
 		  <a href="#" class="list-group-item active">News Feed</a>
 		</div>
-		  Group
+		-->
+		<!--  Group  -->
 		<div id="team-menu">
 		</div>
+		<!--
 		<div id="network-menu">
 		  Network
 			<a href="#" class="list-group-item">Network</a>
 		</div>
+		-->
 	</div>
 	
 	<!-- PAGE -->
@@ -96,6 +103,7 @@
 <script src="{% static 'js/view/PageView/Team/TeamInboxPageView.js' %}"></script>
 <script src="{% static 'js/view/PageView/Team/TeamLearnPageView.js' %}"></script>
 <script src="{% static 'js/view/PageView/Team/TeamWorkspacePageView.js' %}"></script>
+<script src="{% static 'js/view/PageView/Team/TeamSharedFilesView.js' %}"></script>
 
 <!-- Load Backbone 2-level Views-->
 <script src="{% static 'js/view/PageView/Team/TeamView.js' %}"></script>
@@ -109,6 +117,12 @@
 
 <!-- Load Router -->
 <script src="{% static 'js/router.js' %}"></script>
+
+<!-- Real-Time Web -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+</script>
 
 </body>
 </html>

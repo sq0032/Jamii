@@ -37,19 +37,40 @@ body{
 	height			:100%;
 }
 
+#team-view h2{
+	margin-top		:0px;
+}
+
 /*******************
    TeamPage/TaskBoard 
 *******************/
+#workspace-page{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
 #taskboard-wrap{
 	/*position		:absolute;
-	right			:0px;*/
+	right			:0px;
+	left: 0px;
+	top: 0px;
+	bottom: 0px; */
+	overflow: auto;
 }
 
 .taskboard{
 	text-align		:center;
 	border			:1px black solid;
+	height: 100%;
+	width:100%;
+	min-width:1100px;
 	min-height		:400px;
 	background-color:rgb(35, 113, 159);
+	overflow-x: auto; 
+	/*white-space: nowrap;*/
 	/*overflow-x		:scroll;
 	width			:1600px;*/
 }
@@ -154,6 +175,59 @@ body{
 	background		:transparent;
 	color			:white;
 	cursor			:pointer;
+}
+
+
+/*******************
+   TeamPage/SharedFile 
+*******************/
+#file-links {
+    border: 2px solid #FFCCFF;
+    padding: 0px;
+}
+
+.file-link {
+    list-style: none;
+}
+
+#sharedfile-container {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+#sharedfile-container-header {
+    
+}
+
+#dropbox-upload {
+    margin-bottom: 10px;
+}
+
+.file-name,
+#sharedfile-name{
+    float: left;
+    width: 47%;
+}
+
+.file-update-datetime,
+#sharedfile-datetime{
+    float: left;
+    width: 24%;
+    line-height: 32px;
+}
+
+.file-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.file-uploader,
+#sharedfile-uploader {
+    float: right;
+    width: 12%;
+    line-height: 32px;
 }
 
 /*******************

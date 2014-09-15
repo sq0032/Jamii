@@ -20,6 +20,7 @@ def test(request):
     return render(request, 'test.html', locals())
 
 def user(request):
+    print request.user
     if request.user.is_authenticated():
     #user        = JamiiUser.objects.all()[0]
     #thumbnail   = user.thumbnail.url

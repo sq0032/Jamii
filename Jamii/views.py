@@ -16,6 +16,11 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 def main(request):
+    print request.POST
+    print request.body
+    print request.GET
+    #print request
+    #print request
     if request.user.is_authenticated():
         return render(request, 'jamii.html')
     else:
@@ -23,6 +28,7 @@ def main(request):
             username = request.POST.get('username','')
             password = request.POST.get('password','')
             user = auth.authenticate(username=username, password=password)
+            print user
             if user is not None and user.is_active:
                 auth.login(request, user)
                 return render(request, 'jamii.html')

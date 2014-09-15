@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from taskboard.models import *
+from django.contrib.auth.decorators import login_required
 import json
 
 # Create your views here.
@@ -26,7 +27,8 @@ def cards(request):
     elif request.method=="PUT":
         print 'put'
         return HttpResponse('post')
-    
+
+@login_required
 def card(request, cardid):
     if request.method=="DELETE":
         card = TaskCard.objects.filter(id = cardid)[0]
@@ -63,6 +65,7 @@ def card(request, cardid):
                 'label' : card.label}
     return HttpResponse(json.dumps(card_dic), content_type="application/json")
 
+@login_required
 def list(request, listid):
     if request.method=="GET":
         tasklist    = TaskList.objects.filter(id=listid)[0]
@@ -99,7 +102,7 @@ def list(request, listid):
         return HttpResponse(status = 200)
     return HttpResponse('ok')
 
-
+@login_required
 def board(request, teamid):
     if request.method=="GET":
         board = TaskBoard.objects.filter(team_id = teamid)[0]

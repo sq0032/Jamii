@@ -29,7 +29,5 @@ app.appView = Backbone.View.extend({
 		this.render();
 	},
 	render:function(){
-
 	},
-
 });

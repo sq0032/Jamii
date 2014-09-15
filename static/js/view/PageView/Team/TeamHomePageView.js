@@ -61,8 +61,7 @@ app.TeamMainView = Backbone.View.extend({
 		this.render();
 	},
 	render:function(){
-		var name = this.team.get('name');
-		var html = _.template(app.template['TeamHomePageView']['main'],{name:name});
+		var html = _.template(app.template['TeamHomePageView']['main'],{team:this.team});
 		this.$el.html(html);
 	}
 });
@@ -71,27 +70,41 @@ app.TeamHomePageView = Backbone.View.extend({
 	tagName	: 'div',
 	id		: 'team-page',
 	events:{
-		'click a'		: 'moveTo',
+		//'click a'		: 'moveTo',
+		'click .nav-tabs a' : 'goTo',
 	},
 	initialize:function(){
 		this.team = this.model;
 		
 		//Create sub views
+		/*
 		this.teamMainView 		= new app.TeamMainView({model:this.team});
 		this.teamTreeView 		= new app.TeamTreeView();
 		this.teamPitchesView 	= new app.TeamPitchesView();
 		this.teamMilestonesView = new app.TeamMilestonesView();
+		*/
 		
+		this.teamMainView 			= new app.TeamMainView({model:this.team});
+		this.teamWorkSpacePageView 	= new app.TeamWorkspacePageView({model:this.team});
+		this.teamInboxPageView 		= new app.TeamInboxPageView();
+		this.teamSharedFilesView	= new app.TeamSharedFilesView({model:this.team});
 		this.render();
+	
 	},
 	render: function(){
 		var html = _.template(app.template['TeamHomePageView']['frame'])
 		this.$el.html(html);
-		
+		/*
 		this.$('#team-view-container').append(this.teamMainView.el);
 		this.$('#team-view-container').append(this.teamTreeView.el);
 		this.$('#team-view-container').append(this.teamPitchesView.el);
 		this.$('#team-view-container').append(this.teamMilestonesView.el);
+		*/
+		
+		this.$('#team-view-main').append(this.teamMainView.el);
+		this.$('#team-view-workspace').append(this.teamWorkSpacePageView.el);
+		this.$('#team-view-inbox').append(this.teamInboxPageView.el);
+		this.$('#team-view-files').append(this.teamSharedFilesView.el);
 	},
 	moveTo: function(ev){
 		var id = $(ev.target).attr('link');
@@ -124,4 +137,13 @@ app.TeamHomePageView = Backbone.View.extend({
 			scrollTop: cur_y + y
 		},1000);
 	},
+	goTo: function(ev){
+		var id = $(ev.target).attr('link');
+		this.$("#team-view-main").hide();
+		this.$("#team-view-workspace").hide();
+		this.$("#team-view-inbox").hide();
+		this.$("#team-view-files").hide();
+		
+		this.$("#"+id).show();
+	}
 });

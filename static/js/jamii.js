@@ -1,7 +1,6 @@
 $(function(){
 	//Create Jamii app
 	app.appview = new app.appView();
-	
 	//Test session
 	/*
 	var treeY 		= $("#personal-view-tree").position().top;
@@ -61,6 +60,12 @@ $(function(){
 		var data_str = JSON.stringify(data).escapeSpecialChars();
 		app.template['PersonalView'] = JSON.parse(JSON.parse(data_str));
 		//app.template['PersonalView'] = data;
+	});
+	
+	$.get("static/template/SharedfileView.tpl", function(data){
+		var data_str = JSON.stringify(data).escapeSpecialChars();
+		app.template['SharedfileView'] = JSON.parse(JSON.parse(data_str));
+		//app.template['SharedfileView'] = data;
 	});
 	
 	String.prototype.escapeSpecialChars = function() {
