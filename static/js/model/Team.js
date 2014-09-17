@@ -3,9 +3,9 @@ var app = app || {};
 app.SharedFile = Backbone.Model.extend({
 	url		:function(){
 		if(typeof(this.id)=='undefined'){
-			return '/team/'+this.team_id+'file';
+			return '/team/'+this.get('team_id')+'/file';
 		}else{
-			return '/team/'+this.team_id+'file/'+this.id;
+			return '/team/'+this.get('team_id')+'/file/'+this.id;
 		}
 	},
 });

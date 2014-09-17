@@ -12,3 +12,14 @@ class Team(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+class SharedFile(models.Model):
+    name    = models.CharField(max_length=100)
+    icon    = models.CharField(max_length=100)
+    link    = models.CharField(max_length=100)
+    uploader= models.ForeignKey(User, related_name='uploader')
+    team    = models.ForeignKey(Team)
+    upload_datetime = models.DateTimeField(auto_now_add=True)
+    
+    def __unicode__(self):
+        return '"%s" by %s at %s'%(self.name, self.uploader.username, self.upload_datetime)

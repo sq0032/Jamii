@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/jamii.css' %}">
 </head>
 <body>
+<script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="e82l2ankj2uy71n"></script>
 
 <div id="app">
@@ -36,9 +37,15 @@
 			</div>
 		-->
 		  <ul id="user-navview" class="nav navbar-nav navbar-right">
-			<li><a id="user-navview-thumbnail" href="#" style="padding:5px"><img src="{{MEDIA_URL}}{{user.jamiiuser.thumbnail}}" alt="..." class="img-circle" height="40px"></a></li>
+			<li><a id="user-navview-thumbnail" href="#" style="padding:5px">
+				{% if user.thumbnail %}
+					<img src="{{MEDIA_URL}}{{user.jamiiuser.thumbnail}}" alt="..." class="img-circle" height="40px">
+				{% else %}
+					<img src="{% static 'img/default_profile.jpg' %}" alt="..." class="img-circle" height="40px">
+				{% endif %}
+			</a></li>
 			<li class="dropdown">
-			  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{user.first_name}} {{user.last_name}} <b class="caret"></b></a>
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{user.username}} <b class="caret"></b></a>
 			  <ul class="dropdown-menu">
 				<li><a id="user-navview-notification"href="#"><span class="badge pull-right">42</span>Notifications</a></li>
 				<li><a id="user-navview-inbox"href="#"><span class="badge pull-right">4</span>Inbox</a></li>

@@ -45,6 +45,10 @@ app.MenuView = Backbone.View.extend({
 		var name	= element.html();
 
 		this.parentView.pageView.renderTeamPage(teamid, name);
+		
+		this.$('.list-group-item').removeClass('active');
+
+		element.addClass('active');
 	},
 	/*
 	openNewWorkPage: function(e){

@@ -84,10 +84,10 @@ app.TeamHomePageView = Backbone.View.extend({
 		this.teamMilestonesView = new app.TeamMilestonesView();
 		*/
 		
-		this.teamMainView 			= new app.TeamMainView({model:this.team});
-		this.teamWorkSpacePageView 	= new app.TeamWorkspacePageView({model:this.team});
-		this.teamInboxPageView 		= new app.TeamInboxPageView();
-		this.teamSharedFilesView	= new app.TeamSharedFilesView({model:this.team});
+		this.teamMainView 			= new app.TeamMainView({ model: this.team });
+		this.teamWorkSpacePageView 	= new app.TeamWorkspacePageView({ model: this.team });
+		this.teamInboxPageView 		= new app.TeamInboxPageView({ model: this.team });
+		this.teamSharedFilesView	= new app.TeamSharedFilesView({ model: this.team });
 		this.render();
 	
 	},

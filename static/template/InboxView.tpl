@@ -38,7 +38,12 @@
 			<div id='message-create-date'><%= msgBox.create_datetime %></div>
 			<div id='message-attendants'>
 				<% _.each(msgBox.attendants, function(attendant) { %>
-					<img src='/media/<%=attendant.thumbnail%>' width='64px' height='64px'>  
+				
+					<% if(attendant.thumbnail) { %>
+						<img src='/media/<%=attendant.thumbnail%>' width='64px' height='64px'>
+					<% } else { %>
+						<img src='/static/img/default_profile.jpg' width='64px' height='64px'>
+					<% } %>
 				<% }); %>
 			</div>
 			<h4 id='message-subject'>
@@ -55,6 +60,7 @@
 			<div class='message-poster'>
 					<img src='/media/<%= msg.thumbnail %>' width='32px' height='32px'>
 				</div>
+				<strong><%= msg.poster %>:</strong>
 				<div class='message-datetime'><%= msg.create_datetime %></div>
 				<div class='message'>
 					<%= msg.message %>
@@ -91,8 +97,11 @@
 		
 		"user-tag":
 		"<div class='user-tag'>
-			
-			<img src='/media/<%=usertag.thumbnail%>' alt='<%=usertag.name%>'>
+			<% if(usertag.thumbnail) { %>
+				<img src='/media/<%=usertag.thumbnail%>' alt='<%=usertag.name%>'>
+			<% } else { %>
+				<img src='/static/img/default_profile.jpg' alt='<%=usertag.name%>'>
+			<% } %>
 			
 			<div class='media-body'>
 				<h4 class='media-heading' data='<%= usertag.id %>'>

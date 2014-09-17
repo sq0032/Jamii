@@ -83,13 +83,15 @@ app.InboxNewMessageView = Backbone.View.extend({
 		'click .user-tag'	: 'selectUser',
 	},
 	initialize:function(){
-		this.render();
 		this.msgBoxes = this.collection;
-		console.log(msgBoxes);
+		this.team = this.model;
+		this.render();
+		//this.msgBoxes = msgBox;
+		console.log(this.msgBoxes);
 		var that = this;
 		
 		//get all Jamii user as new inbox message receivers (test purpose)
-		$.get("/inbox/user", function(data){
+		$.get('/team/'+this.team.get('id')+'/members/', function(data){
 			that.usertag = data;
 			that.renderUserTags();
 		});
@@ -139,16 +141,16 @@ app.InboxNewMessageView = Backbone.View.extend({
 	
 		var attendants 	= this.user_tag_ids;
 		attendants.push(app.user.id);
-		var message		= $("textarea").val();
-		var subject		= $("#message-subject-input").val();
-		
+		var message		= this.$("textarea").val();
+		var subject		= this.$("#message-subject-input").val();
+		//alert(message);
 		if(attendants.length>0 &&
-		   $.trim(message)!='' &&
-		   $.trim(subject)!=''){
+		  $.trim(message)!='' &&
+		  $.trim(subject)!=''){
 			var msgbox = new app.MsgBox({'attendants' 	: attendants,
 										 'message'		: message,
 										 'subject'		: subject});
-										 
+			msgbox.url = 'team/'+this.team.get('id')+'/msgboxes/';
 			msgbox.save(null,{
 				success: function(model, response){
 					that.msgBoxes.add(model);
@@ -165,7 +167,7 @@ app.InboxNewMessageView = Backbone.View.extend({
 			this.$('textarea').val('');
 			this.$('.user-tag').removeClass('selected');
 		}else{
-			alert('')
+			alert('att:'+attendants.length+' message:'+message+' sub:'+subject);
 		}
 		//alert('send');
 	},
@@ -206,11 +208,16 @@ app.InboxMsgBoxListView = Backbone.View.extend({
 	events:{
 		'click #new-message-button'	: 'newInboxMessage',
 	},
-	initialize:function(options){
-		this.msgBoxes = options.msgBoxes;
+	initialize:function(){
+		this.team = this.model;
+		
+		this.msgBoxes	= new app.MsgBoxes();
+		this.msgBoxes.url = 'team/'+this.team.get('id')+'/msgboxes/';
 		
 		this.listenTo(this.msgBoxes, 'reset', this.render);
 		this.listenTo(this.msgBoxes, 'add', this.renderMsgBox);
+		
+		this.msgBoxes.fetch({'reset':true});
 		//alert(options.collection);
 		//this.render();
 	},
@@ -238,7 +245,7 @@ app.InboxMsgBoxListView = Backbone.View.extend({
 		if(InboxView.inboxMessageView){
 			InboxView.inboxMessageView.remove();
 		}
-		InboxView.inboxMessageView = new app.InboxNewMessageView({collection:this.msgBoxes});
+		InboxView.inboxMessageView = new app.InboxNewMessageView({model: this.team, collection: this.msgBoxes});
 		InboxView.renderMessageView();
 	},
 });
@@ -265,15 +272,11 @@ app.TeamInboxPageView = Backbone.View.extend({
 	events:{
 	},
 	initialize:function(){
-		this.msgBoxes	= new app.MsgBoxes();
-		this.msgBoxes.fetch({'reset':true});
-		
-		msgBoxes	= new app.MsgBoxes();
-		msgBoxes.fetch({'reset':true});
+		this.team = this.model;
 		
 		this.inboxHeaderView 	= new app.InboxHeaderView();
 		this.inboxHeaderView.parentView = this;
-		this.inboxMsgListView 	= new app.InboxMsgBoxListView({'msgBoxes':this.msgBoxes});
+		this.inboxMsgListView 	= new app.InboxMsgBoxListView({model:this.team});
 		this.inboxMsgListView.parentView = this;
 		this.inboxMessageView 	= new app.InboxMessageView();
 		//this.inboxMessageView.parentView = this;

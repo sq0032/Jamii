@@ -58,7 +58,7 @@ body{
 	left: 0px;
 	top: 0px;
 	bottom: 0px; */
-	overflow: auto;
+	overflow-x: auto;
 }
 
 .taskboard{
@@ -66,7 +66,7 @@ body{
 	border			:1px black solid;
 	height: 100%;
 	width:100%;
-	min-width:1100px;
+	min-width:1140px;
 	min-height		:400px;
 	background-color:rgb(35, 113, 159);
 	overflow-x: auto; 
@@ -82,8 +82,9 @@ body{
 	padding			:5px;
 	background-color:gray;
 	color			:white;
-	width			:250px;
+	width			:260px;
 	min-height		:60px;
+	height			:auto;
 }
 
 .tasklistheader{
@@ -91,7 +92,7 @@ body{
 }
 
 .taskcontainer{
-	max-height		:320px;
+	max-height		:100%;
 	overflow-y		:auto;
 	min-height		:20px;
 }
@@ -182,8 +183,8 @@ body{
    TeamPage/SharedFile 
 *******************/
 #file-links {
-    border: 2px solid #FFCCFF;
-    padding: 0px;
+	border: 2px solid #FFCCFF;
+	padding: 0px;
 }
 
 .file-link {
@@ -191,43 +192,43 @@ body{
 }
 
 #sharedfile-container {
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid black;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
 }
 
 #sharedfile-container-header {
-    
+
 }
 
 #dropbox-upload {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .file-name,
 #sharedfile-name{
-    float: left;
-    width: 47%;
+	float: left;
+	width: 47%;
 }
 
 .file-update-datetime,
 #sharedfile-datetime{
-    float: left;
-    width: 24%;
-    line-height: 32px;
+	float: left;
+	width: 24%;
+	line-height: 32px;
 }
 
 .file-icon {
-    width: 32px;
-    height: 32px;
+	width: 32px;
+	height: 32px;
 }
 
 .file-uploader,
 #sharedfile-uploader {
-    float: right;
-    width: 12%;
-    line-height: 32px;
+	float: right;
+	width: 12%;
+	line-height: 32px;
 }
 
 /*******************
