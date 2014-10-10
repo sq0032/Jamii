@@ -1,4 +1,67 @@
-{
+{	"main-frame-test":
+		"<div id='personal-view-container'>
+		</div>",
+	"tree-test":
+		"<div id='profile'>
+			<div id='profile-header'>
+				<div id='profile-name'>
+					<%= user.get('name') %>
+				</div>
+				<button>Import from LinkedIn</button>
+			</div>
+			<div class='clear'></div>
+			<div id='profile-left'>
+				<% if( profile.pictureUrl) { %>
+					<img src='<%= profile.pictureUrl %>' width='64px' height='64px'>
+				<% } else { %>
+					<img src='/static/img/default_profile.jpg' width='64px' height='64px'>
+				<% } %>
+				<div class='profile-section-bar'>Experence</div>
+				<div id='profile-experence'>
+					<% if( profile.educations.values ) { %>
+						<% _.each( profile.educations.values, function(education){ %>
+							<p><strong><%= education.degree %></strong></p>
+							<p><%= education.fieldOfStudy %></p>
+							<p><%= education.schoolName %></p><br>
+						<% }); %>
+					<% } else { %>
+						No education info
+					<% } %>
+				</div>
+			</div>
+			<div id='profile-right'>
+				<div class='profile-section-bar'>Expertise</div>
+				<div id='profile-industry'>
+					<% if( profile.industry ) { %>
+						<h3><%= profile.industry %></h3>
+					<% } else { %>
+						No expertise
+					<% } %>
+				</div>
+				<div class='profile-section-bar'>Summary</div>
+				<div id='profile-summary'>
+					<% if( profile.summary ) { %>
+						<%= profile.summary %>
+					<% } else { %>
+						No summary
+					<% } %>
+				</div>
+				<div class='profile-section-bar'>Skills</div>
+				<div id='profile-skill'>
+					<% if( profile.skills.values ) { %>
+						<% _.each( profile.skills.values, function(skill){ %>
+							<div class='profile-skilltag'>
+								<%= skill.skill.name %>
+							</div>
+						<% }); %>
+					<% } else { %>
+						No skills
+					<% } %>
+				</div>
+			</div>
+			<div class='clear'></div>
+		</div>
+		",
 	"main-frame":
 		"<ul class='nav-tabs'>
 			<li><a link='personal-view-tree'>Tree</a></li>

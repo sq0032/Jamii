@@ -41,6 +41,34 @@ body{
 	margin-top		:0px;
 }
 
+#team-intro{
+	margin-bottom: 20px;
+}
+
+#team-members{
+    /*max-width: 800px;*/
+    height: auto;
+    /*border: solid 1px black;*/
+}
+
+#team-members .member{
+	position: relative;
+	width:150px;
+	height: 200px;
+/*    border: 1px solid black;*/
+	margin: 20px;
+	float: left;
+	text-align: center;
+	padding: 10px;
+	background-color: #dddddd;
+}
+
+#team-members  img{
+    width: 80%;
+    border-radius: 50%;
+    
+}
+
 /*******************
    TeamPage/TaskBoard 
 *******************/
@@ -183,19 +211,22 @@ body{
    TeamPage/SharedFile 
 *******************/
 #file-links {
-	border: 2px solid #FFCCFF;
+	/*border-bottom: 2px solid #FFCCFF;*/
 	padding: 0px;
 }
 
 .file-link {
-    list-style: none;
+	list-style: none;
+	border-bottom: 2px solid #FFCCFF;
+	margin-bottom: 2px;
+	padding-bottom: 2px;
 }
 
 #sharedfile-container {
-	max-width: 800px;
+	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 #sharedfile-container-header {
@@ -541,4 +572,91 @@ img.media-object{
 	min-width		:450px;
 	height			:150px;
 	float			:left;
+}
+
+/*****************************
+   Personal Page / Profile 
+*****************************/
+
+#profile img{
+    width: 200px;
+    height: 200px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+}
+
+#profile {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin-top: 100px;*/
+    /*border: 1px solid black;*/
+    padding: 10px;
+}
+
+#profile-header{
+	margin-bottom: 15px;
+}
+
+#profile-name{
+	font-weight: bold;
+	font-size: 24px;
+	float: left;
+}
+
+#profile-header button{
+	float: right;
+}
+
+#profile-left {
+/*    display: inline;*/
+    float: left;
+    width: auto;
+}
+
+#profile-right {
+/*    display: inline;*/
+    float: right;
+    width: 640px;
+    
+}
+
+#profile-experence {
+    margin :10px;
+    width: auto;
+/*    background-color: gray*/
+}
+
+#profile-summary {
+    margin-bottom :10px;
+/*    background-color: gray*/
+}
+
+#profile-name {
+    margin-top : 0px; 
+}
+
+.profile-skilltag{
+    width: auto;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #0066ff;
+    float: left;
+}
+
+#profile-skill,
+#profile-summary,
+#profile-experence{
+    min-height: 100px;
+}
+
+#profile-industry{
+	min-height: 50px;
+}
+
+.profile-section-bar{
+	background-color: #dddddd;
+	width: 100%;
+	padding: 2px;
 }

@@ -14,7 +14,7 @@
 		"<li class='file-link'>
 			<div class='file-name'>
 				<img class='file-icon' src='<%= file.get('icon') %>'>
-				<a href='<%= file.link %>'><%= file.get('name') %></a>
+				<a href='<%= file.get('link') %>'><%= file.get('name') %></a>
 			</div>
 			<div class='file-update-datetime'>
 				<%= datetime.getHours() %>:<%= datetime.getMinutes() %> <%= datetime.toDateString() %>

@@ -38,13 +38,63 @@ app.PersonalTreeView = Backbone.View.extend({
 	className:'full-page',
 	id		: 'personal-view-tree',
 	events	:{
+		"click #profile-header button": "loadLinkedIn",
 	},
-	initialize:function(){
+	initialize : function(){
+		this.profile = {
+			"_key": "~",
+			"educations": {
+			  "_total": 3,
+			  "values": []
+			},
+			"industry": "",
+			"interests": "Table Tennis, Contract Bridge, Programming",
+			"pictureUrl": "https://media.licdn.com/media/p/5/005/041/10e/18df1f6.jpg",
+			"skills": {
+			  "_total": 28,
+			  "values": []
+			},
+			"summary": "",
+		}
+		
+		//this.listenTo(this.);
+		//this.displayProfiles('123');
 		this.render();
 	},
 	render:function(){
-		var html = _.template(app.template['PersonalView']['tree'], {});
+		//var profile = {thumbnail:''};
+		var html = _.template(app.template['PersonalView']['tree-test'], {user:app.user, profile:this.profile});
 		this.$el.html(html);
+	},
+	loadLinkedIn : function(){
+		var that = this;
+		IN.User.authorize(function(){that.onLinkedInAuth();});
+	},
+	onLinkedInAuth : function(){
+		var that = this;
+		//console.log(this); //this is View
+		console.log('this.onLinkedInAuth');
+		IN.API.Profile("me").fields("firstName", 
+									"lastName", 
+									"industry", 
+									"educations", 
+									"languages", 
+									"location",
+									"skills",
+									"interests",
+									"summary",
+									"specialties",
+									"three-past-positions",
+									"three-current-positions").result(function(profiles){that.displayProfiles(profiles);});
+		IN.API.Raw("/people/~/picture-urls::(original)").result(function(profiles){that.displayPicture(profiles);});
+	},
+	displayProfiles : function(profiles){
+		this.profile = profiles.values[0];
+		this.render();
+	},
+	displayPicture : function(pictures){
+		this.profile.pictureUrl = pictures.values[0];
+		this.render();
 	}
 });
 
@@ -57,24 +107,25 @@ app.PersonalView = Backbone.View.extend({
 	},
 	initialize:function(){
 		//Create sub views
+		
 		this.personaltreeView 		= new app.PersonalTreeView();
-		this.personalpitchesView 	= new app.PersonalPitchesView();
+		/*this.personalpitchesView 	= new app.PersonalPitchesView();
 		this.personalmilestonesView = new app.PersonalMilestonesView();
 		
 		//Create sub view anchors
 		this.treeY			= 0;
 		this.pitchesY		= 0;
 		this.milestonesY	= 0;
-		
+		*/
 		this.render();
 	},
 	render: function(){
-		var html = _.template(app.template['PersonalView']['main-frame'], {});
+		var html = _.template(app.template['PersonalView']['main-frame-test'], {});
 		this.$el.html(html);
 		
 		this.$('#personal-view-container').append(this.personaltreeView.el);
-		this.$('#personal-view-container').append(this.personalpitchesView.el);
-		this.$('#personal-view-container').append(this.personalmilestonesView.el);
+		//this.$('#personal-view-container').append(this.personalpitchesView.el);
+		//this.$('#personal-view-container').append(this.personalmilestonesView.el);
 	},
 	moveTo: function(ev){
 		var id = $(ev.target).attr('link');

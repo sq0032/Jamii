@@ -3,6 +3,45 @@
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/jamii.css' %}">
+	<!--
+	<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+		api_key: 77b39mkk00f0s2
+		//onLoad: onLinkedInLoad
+		authorize: true
+	</script> 
+	<script type="text/javascript">
+		// 2. Runs when the JavaScript framework is loaded
+		function onLinkedInLoad() {
+			console.log("onLinkedInLoad");
+			IN.Event.on(IN, "auth");
+			//IN.Event.on(IN, "auth");
+			//alert('InLoad');
+		}
+
+		// 2. Runs when the viewer has authenticated
+		function onLinkedInAuth() {
+		IN.API.Profile("me").fields("firstName", 
+									"lastName", 
+									"industry", 
+									"educations", 
+									"languages", 
+									"location",
+									"skills",
+									"interests",
+									"summary",
+									"picture-url",
+									"specialties",
+									"three-past-positions",
+									"three-current-positions").result(displayProfiles);
+		}
+
+		// 2. Runs when the Profile() API call returns successfully
+		function displayProfiles(profiles) {
+			member = profiles.values[0];
+		}
+	</script> 
+	-->
+
 </head>
 <body>
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>

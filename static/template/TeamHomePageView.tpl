@@ -32,7 +32,22 @@
 		</h2>
 		<div id='team-intro'>
 			<%=team.get('introduction')%>
-		</div>",
+		</div>
+		<div id='team-members'>
+			<% _.each(team.get('members'), function(member){ %>
+				<div class='member'>
+					<% if(member.thumbnail) {%>
+						<img src='/media/<%= member.thumbnail %>'>
+					<% }else{ %>
+						<img src='/static/img/default_profile.jpg'>
+					<% } %>
+					<h4><%= member.name %></h4>
+					<p>Member</p>
+				</div>
+			<% }); %>
+			<div class='clear'></div>
+		</div>
+		",
 		
 	"tree":
 		"<h2>

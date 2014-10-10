@@ -20,7 +20,10 @@ def team(request, teamid):
     
     member_arr = []
     for member in team.members.all():
-        member_arr.append(member.id)
+        member_dic = {'id'          : member.id,
+                      'name'        : member.username,
+                      'thumbnail'   : member.jamiiuser.thumbnail.name}
+        member_arr.append(member_dic)
     
     team_dic = {'id'            : teamid,
                 'name'          : team.name,
